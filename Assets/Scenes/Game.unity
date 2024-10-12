@@ -7230,7 +7230,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 425396705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a21511db1661e8c499fbf1cada61bc2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 54bde87c5414c544a8373d5cfdf27fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turretRotationPoint: {fileID: 163347588}
@@ -7238,6 +7238,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   targetingRange: 3
+  rotationSpeed: 200
 --- !u!4 &425396707
 Transform:
   m_ObjectHideFlags: 0
