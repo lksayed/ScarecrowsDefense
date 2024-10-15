@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8226459900588276656}
   - component: {fileID: 7479786002156986913}
   - component: {fileID: 902005743388621290}
+  - component: {fileID: 6369473326225227686}
   - component: {fileID: 1507587597956490916}
   - component: {fileID: 6906300371313262836}
-  - component: {fileID: 6369473326225227686}
   - component: {fileID: 1405275420170560525}
   m_Layer: 6
   m_Name: Enemy
@@ -99,6 +99,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &6369473326225227686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364989323494463271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c0e775e4008424094b2c0b81b0c2b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySprites:
+  - {fileID: 21300000, guid: 30eb33d12559dda44b074bc36206f4d2, type: 3}
+  - {fileID: 21300000, guid: 49695e3e589f4764aacb44fb7c74dece, type: 3}
+  - {fileID: 21300000, guid: 1bbd78c21586523409c4839b6df809e0, type: 3}
+  - {fileID: 21300000, guid: d17113db380d79f4099d17dd8489181d, type: 3}
 --- !u!114 &1507587597956490916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,23 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
---- !u!114 &6369473326225227686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364989323494463271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2c0e775e4008424094b2c0b81b0c2b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemySprites:
-  - {fileID: 21300000, guid: 30eb33d12559dda44b074bc36206f4d2, type: 3}
-  - {fileID: 21300000, guid: 49695e3e589f4764aacb44fb7c74dece, type: 3}
-  - {fileID: 21300000, guid: 1bbd78c21586523409c4839b6df809e0, type: 3}
-  - {fileID: 21300000, guid: d17113db380d79f4099d17dd8489181d, type: 3}
 --- !u!212 &1405275420170560525
 SpriteRenderer:
   m_ObjectHideFlags: 0
