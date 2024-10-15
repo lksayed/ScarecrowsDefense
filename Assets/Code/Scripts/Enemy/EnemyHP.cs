@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
-    [Header("Attributes")]
-    [SerializeField] public int hp = 100;
+	[Header("Attributes")]
+	[SerializeField] public int healthPoints = 100;
+	public void TakeDamage(int dmg)
+	{
+		healthPoints -= dmg;
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Check if enemy should be killed
-        if (hp <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+		// Checks if enemy should be killed
+		if (healthPoints <= 0)
+		{
+			// Tells "EnemySpawner" script an enemy object has been destroyed
+			EnemySpawner.onEnemyDestroy.Invoke();
+			Destroy(gameObject);
+		}
+	}
 }
+

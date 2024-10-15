@@ -22,8 +22,8 @@ public class Turret : MonoBehaviour
 	{
 		if (target == null)
 		{
-            timeOnTarget = 0f;
-            FindTarget();
+         timeOnTarget = 0f;
+         FindTarget();
 			return;
 		}
 
@@ -32,15 +32,16 @@ public class Turret : MonoBehaviour
 		if (!CheckTargetInRange())
 		{
 			target = null;
-            timeOnTarget = 0f;
+         timeOnTarget = 0f;
         }
 
 		if (target != null)
 		{
 			timeOnTarget += Time.deltaTime;
+
 			if (timeOnTarget > attackInterval)
 			{
-				target.GetComponent<EnemyHP>().hp -= 50;
+				target.GetComponent<EnemyHP>().healthPoints -= 50;
                 timeOnTarget = 0f;
 
             }
