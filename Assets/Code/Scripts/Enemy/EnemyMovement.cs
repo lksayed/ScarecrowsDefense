@@ -9,7 +9,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     [Header("Attributes")]
-    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] public float moveSpeed = 2f;
+    [SerializeField] private int damage = 5;
 
     private Transform target;
     private int pathIndex = 0;
@@ -29,6 +30,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
+                LevelManager.main.playerHP -= damage;
                 return;
             }
             else

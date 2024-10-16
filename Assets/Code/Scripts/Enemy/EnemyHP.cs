@@ -14,7 +14,10 @@ public class EnemyHP : MonoBehaviour
         // Check if enemy should be killed
         if (hp <= 0)
         {
+            EnemySpawner.onEnemyDestroy.Invoke();
             Destroy(gameObject);
+            LevelManager.main.IncreaseCurrency(25);
+            return;
         }
     }
 }

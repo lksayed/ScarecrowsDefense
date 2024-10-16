@@ -23,8 +23,22 @@ public class Plot : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = plotSprite;
     }
 
-    private void OnMouseDown()
+    private void OnMouseOver()
     {
-        Debug.Log("Build tower here");
+        // User must RIGHT-CLICK to place troops
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (tower != null) return;
+            Tower towerToBuild = BuildManager.main.GetSelectedTower();
+
+            if (towerToBuild.cost > LevelManager.main.currency)
+            {
+                Debug.Log("You can't afford this tower");
+                return;
+            }
+
+            LevelManager.main.SpendCurrency(towerToBuild.cost);
+            tower = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
+        }
     }
 }
