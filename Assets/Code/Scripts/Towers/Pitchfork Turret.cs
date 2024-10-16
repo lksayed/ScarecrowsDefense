@@ -40,7 +40,7 @@ public class PitchforkTurret : MonoBehaviour
 		{
 			timeUntilFire += Time.deltaTime;
 
-			if (timeUntilFire >= 1f / bps)
+			if (timeUntilFire >= 1f / bps) // (1 sec / bullets per second)
 			{
 				Shoot();
 				timeUntilFire = 0f;
@@ -52,7 +52,7 @@ public class PitchforkTurret : MonoBehaviour
 	{
 		GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
 		PitchforkBullet bulletScript = bulletObj.GetComponent<PitchforkBullet>();
-		bulletScript.SetTarget(target); // Sets bullet's target to current target
+		bulletScript.SetTarget(target); // Sets bullet's target to current locked-on target
 	}
 	private void FindTarget() // The Tower's target finder
 	{
