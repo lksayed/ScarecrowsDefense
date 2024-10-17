@@ -75,5 +75,4 @@ public class Turret : MonoBehaviour
 		Handles.color = Color.blue;
 		Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 	}
-
 }

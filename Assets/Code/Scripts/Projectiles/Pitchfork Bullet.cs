@@ -33,13 +33,13 @@ public class PitchforkBullet : MonoBehaviour
 		Vector2 direction = (target.position - transform.position).normalized;
 
 		// Calculates cross-product of bullet (Bullet Direction * Target Direction)
-		// This allows bullet to rotate in flight
+		// This allows bullet to rotate in flight.
 		float rotateAmount = Vector3.Cross(direction, transform.up).z;
 		rb.angularVelocity = -rotateAmount * rotateSpeed; // Updates bullet in-flight rotation 
 		rb.velocity = direction * bulletSpeed; // Updates bullet speed
 		Destroy(gameObject, bulletLifeTime); // Destroys bullet after 'n' secs
 	}
-	private void SetRigidBodyDir() // Sets the firing direction of bullet
+	private void SetRigidBodyDir() // Sets the firing direction of bullet.
 	{
 		float angle = Mathf.Atan2(target.position.y - transform.position.y,
 		target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
