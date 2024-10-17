@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    GameObject playButton;
+    GameObject helpButton;
+    GameObject quitButton;
+    GameObject backButton;
+    GameObject instructions;
     public void PlayGame()
    {
       // Loads a specified scene after user clicks button
@@ -18,24 +23,34 @@ public class MainMenu : MonoBehaviour
       Application.Quit();
    }
 
-   public void HelpScreen()
+   public void OpenHelpScreen()
     {
-        // Hide buttons and show a wall of text
-        GameObject playButton = GameObject.Find("Play");
-        GameObject helpButton = GameObject.Find("How To Play");
-        GameObject quitButton = GameObject.Find("Exit");
-        GameObject backButton = GameObject.Find("Back");
-
         playButton.SetActive(false);
         helpButton.SetActive(false);
-        quitButton.SetActive(false);    
-        backButton.SetActive(false);
-
+        quitButton.SetActive(false);
+        backButton.SetActive(true);
+        instructions.SetActive(true);
     }
+
+    public void CloseHelpScreen()
+    {
+        playButton.SetActive(true);
+        helpButton.SetActive(true);
+        quitButton.SetActive(true);
+        backButton.SetActive(false);
+        instructions.SetActive(false);
+    }
+
 
     private void Awake()
     {
-        GameObject backButton = GameObject.Find("Back");
-        backButton.SetActive(false);
+       playButton = GameObject.Find("Play");
+       helpButton = GameObject.Find("How To Play");
+       quitButton = GameObject.Find("Exit");
+       backButton = GameObject.Find("Back");
+       instructions = GameObject.Find("InstructionText");
+
+       backButton.SetActive(false);
+       instructions.SetActive(false);
     }
 }
