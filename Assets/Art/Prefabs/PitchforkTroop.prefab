@@ -51,8 +51,8 @@ MonoBehaviour:
     m_Bits: 64
   targetingRange: 3
   rotationSpeed: 350
-  attackInterval: 1
-  damage: 50
+  attackInterval: 0.5
+  damage: 25
 --- !u!1 &241247245120538329
 GameObject:
   m_ObjectHideFlags: 0

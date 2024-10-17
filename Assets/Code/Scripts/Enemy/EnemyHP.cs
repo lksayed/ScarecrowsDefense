@@ -7,6 +7,7 @@ public class EnemyHP : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] public int hp = 100;
+    [SerializeField] public int moneyOnKill = 20;
 
     // Update is called once per frame
     void Update()
@@ -16,7 +17,7 @@ public class EnemyHP : MonoBehaviour
         {
             EnemySpawner.onEnemyDestroy.Invoke();
             Destroy(gameObject);
-            LevelManager.main.IncreaseCurrency(25);
+            LevelManager.main.IncreaseCurrency(moneyOnKill);
             return;
         }
     }

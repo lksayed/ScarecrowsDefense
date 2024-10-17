@@ -49,9 +49,9 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  targetingRange: 6
+  targetingRange: 4
   rotationSpeed: 350
-  attackInterval: 0.25
+  attackInterval: 0.2
   damage: 12
 --- !u!1 &3148350437858781094
 GameObject:

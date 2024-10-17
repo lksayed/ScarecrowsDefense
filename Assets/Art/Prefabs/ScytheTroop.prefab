@@ -82,7 +82,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  targetingRange: 3
+  targetingRange: 3.5
   rotationSpeed: 350
   attackInterval: 0.5
   damage: 50

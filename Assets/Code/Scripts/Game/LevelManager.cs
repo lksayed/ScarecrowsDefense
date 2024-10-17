@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        currency = 100;
+        currency = 250;
         playerHP = 50;
     }
 
