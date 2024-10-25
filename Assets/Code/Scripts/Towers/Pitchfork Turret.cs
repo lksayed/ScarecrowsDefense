@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
 
-public class RangedTurret : MonoBehaviour
+public class PitchforkTurret : MonoBehaviour
 {
 	// Variables for "Ranged Turret"
 	[Header("References")]
@@ -12,11 +12,11 @@ public class RangedTurret : MonoBehaviour
 	[SerializeField] private Transform firingPoint;
 	[SerializeField] private LayerMask enemyMask; // Allows turret to ignore map tiles
 	[SerializeField] private GameObject bulletPrefab;
-	
+
 
 	[Header("Attribute")]
 	[SerializeField] private float targetingRange = 3f; // Turret Range
-	[SerializeField] private float rotationSpeed= 200f; // Turret Rotation Speed
+	[SerializeField] private float rotationSpeed = 200f; // Turret Rotation Speed
 	[SerializeField] private float bps = 1f; // Bullets Per Second
 
 	private Transform target;
@@ -40,7 +40,7 @@ public class RangedTurret : MonoBehaviour
 		{
 			timeUntilFire += Time.deltaTime;
 
-			if (timeUntilFire >= 1f / bps)
+			if (timeUntilFire >= 1f / bps) // (1 sec / bullets per second)
 			{
 				Shoot();
 				timeUntilFire = 0f;
@@ -51,15 +51,15 @@ public class RangedTurret : MonoBehaviour
 	private void Shoot()
 	{
 		GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-		Bullet bulletScript = bulletObj.GetComponent<Bullet>();
-		bulletScript.SetTarget(target); // Sets bullet's target to current target
+		Pitchfork_Bullet bulletScript = bulletObj.GetComponent<Pitchfork_Bullet>();
+		bulletScript.SetTarget(target); // Sets bullet's target to current locked-on target
 	}
 	private void FindTarget() // The Tower's target finder
 	{
 		RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange,
 		(Vector2)transform.position, 0f, enemyMask);
 
-		if (hits.Length > 0) 
+		if (hits.Length > 0)
 		{
 			target = hits[0].transform; // Gives transform of first enemy in range
 		}

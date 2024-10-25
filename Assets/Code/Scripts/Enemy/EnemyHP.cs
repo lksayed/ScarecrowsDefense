@@ -9,11 +9,16 @@ public class EnemyHP : MonoBehaviour
     [SerializeField] public int healthPoints = 100;
     [SerializeField] public int moneyOnKill = 20;
 
+    public void TakeDamage(int damage)
+   {
+      healthPoints -= damage;
+   }
+
     // Update is called once per frame
     void Update()
     {
-        // Check if enemy should be killed
-        if (healthPoints <= 0)
+		// Tells "EnemySpawner" script an enemy object has been destroyed
+		if (healthPoints <= 0)
         {
             EnemySpawner.onEnemyDestroy.Invoke();
             Destroy(gameObject);

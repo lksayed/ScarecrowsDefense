@@ -12,7 +12,7 @@ public class Turret : MonoBehaviour
 
 	[Header("Attribute")]
 	[SerializeField] private float targetingRange = 3f; // Turret Range
-	[SerializeField] private float rotationSpeed= 200f; // Turret Rotation Speed
+	[SerializeField] private float rotationSpeed = 200f; // Turret Rotation Speed
 
 	private Transform target;
 	private float attackInterval = 1f;
@@ -22,8 +22,8 @@ public class Turret : MonoBehaviour
 	{
 		if (target == null)
 		{
-         timeOnTarget = 0f;
-         FindTarget();
+			timeOnTarget = 0f;
+			FindTarget();
 			return;
 		}
 
@@ -32,8 +32,8 @@ public class Turret : MonoBehaviour
 		if (!CheckTargetInRange())
 		{
 			target = null;
-         timeOnTarget = 0f;
-        }
+			timeOnTarget = 0f;
+		}
 
 		if (target != null)
 		{
@@ -42,9 +42,9 @@ public class Turret : MonoBehaviour
 			if (timeOnTarget > attackInterval)
 			{
 				target.GetComponent<EnemyHP>().healthPoints -= 50;
-                timeOnTarget = 0f;
+				timeOnTarget = 0f;
 
-            }
+			}
 		}
 	}
 	private void FindTarget() // The Tower's target finder
@@ -52,7 +52,7 @@ public class Turret : MonoBehaviour
 		RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange,
 		(Vector2)transform.position, 0f, enemyMask);
 
-		if (hits.Length > 0) 
+		if (hits.Length > 0)
 		{
 			target = hits[0].transform; // Gives transform of first enemy in range
 		}
@@ -70,10 +70,9 @@ public class Turret : MonoBehaviour
 		turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation,
 		targetRotation, rotationSpeed * Time.deltaTime); // Time.deltaTime ensures rotate speed remain constant
 	}
-	//private void OnDrawGizmosSelected() // Display gizmos of turret (Only in editor)
-	//{
-	//	Handles.color = Color.blue;
-	//	Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
-	//}
-
+	private void OnDrawGizmosSelected() // Display gizmos of turret (Only in editor)
+	{
+		Handles.color = Color.blue;
+		Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+	}
 }
