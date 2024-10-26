@@ -59,7 +59,7 @@ public class PitchforkTurret : MonoBehaviour
 		RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange,
 		(Vector2)transform.position, 0f, enemyMask);
 
-		if (hits.Length > 0)
+		if (hits.Length > 0) // Note: Could be modified for target prioritization
 		{
 			target = hits[0].transform; // Gives transform of first enemy in range
 		}
@@ -77,10 +77,11 @@ public class PitchforkTurret : MonoBehaviour
 		turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation,
 		targetRotation, rotationSpeed * Time.deltaTime); // Time.deltaTime ensures rotate speed remain constant
 	}
+	#if UNITY_EDITOR
 	private void OnDrawGizmosSelected() // Display gizmos of turret (Only in editor)
 	{
 		Handles.color = Color.blue;
 		Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 	}
-
+	#endif
 }

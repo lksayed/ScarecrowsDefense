@@ -35,12 +35,13 @@ public class LevelManager : MonoBehaviour
     {
         if (amount <= currency)
         {
-            currency -= amount;
+            currency -= amount; // Buy Item
             return true;
         }
         else
         {
-            return false;
+			// FIXME: Display message to notify player they don't have enough money for purchase
+			return false; 
         }
     }
 

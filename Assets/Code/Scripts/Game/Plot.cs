@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Plot : MonoBehaviour
 {
     [Header("References")]
-    private Sprite plotSprite;
     [SerializeField] private Sprite hoverSprite;
-    private GameObject tower;
+
+	 private Sprite plotSprite;
+	 private GameObject tower;
 
     private void Awake()
     {
@@ -25,6 +27,17 @@ public class Plot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Build tower here");
+      if (tower != null) return;
+
+         Tower buildTower = BuildManager.main.GetSelectedTower();
+
+         if (buildTower.cost > LevelManager.main.currency) // Checks if player has enough currency for purchase
+         {
+            return;
+         }
+
+         LevelManager.main.SpendCurrency(buildTower.cost); // Takes tower cost away from player's currency
+
+         Instantiate(buildTower.prefab, transform.position, Quaternion.identity);
     }
 }

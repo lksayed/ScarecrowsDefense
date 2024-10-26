@@ -15,15 +15,15 @@ public class EnemyHP : MonoBehaviour
    }
 
     // Update is called once per frame
-    void Update()
-    {
-		// Tells "EnemySpawner" script an enemy object has been destroyed
-		if (healthPoints <= 0)
-        {
-            EnemySpawner.onEnemyDestroy.Invoke();
-            Destroy(gameObject);
-            LevelManager.main.IncreaseCurrency(moneyOnKill);
-            return;
-        }
-    }
+   void Update()
+   {
+	// Tells "EnemySpawner" script an enemy object has been destroyed
+	if (healthPoints <= 0)
+      {
+        EnemySpawner.onEnemyDestroy.Invoke();
+        LevelManager.main.IncreaseCurrency(moneyOnKill);
+		  Destroy(gameObject);
+		  return;
+      }
+   }
 }

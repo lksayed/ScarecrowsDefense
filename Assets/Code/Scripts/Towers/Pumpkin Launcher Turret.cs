@@ -77,10 +77,12 @@ public class PumpkinLauncherTurret : MonoBehaviour
 		turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation,
 		targetRotation, rotationSpeed * Time.deltaTime); // Time.deltaTime ensures rotate speed remain constant
 	}
+	#if UNITY_EDITOR
 	private void OnDrawGizmosSelected() // Display gizmos of turret (Only in editor)
 	{
 		Handles.color = Color.blue;
 		Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 	}
+	#endif
 
 }

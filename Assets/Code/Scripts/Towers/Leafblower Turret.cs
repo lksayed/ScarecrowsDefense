@@ -2,27 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Unity.VisualScripting;
 
-public class Turret : MonoBehaviour
+public class LeafblowerTurret : MonoBehaviour
 {
-	// Variables for "Turret"
+	// Variables for "Ranged Turret"
 	[Header("References")]
 	[SerializeField] private Transform turretRotationPoint;
+	[SerializeField] private Transform firingPoint;
 	[SerializeField] private LayerMask enemyMask; // Allows turret to ignore map tiles
+	[SerializeField] private GameObject bulletPrefab;
+
 
 	[Header("Attribute")]
 	[SerializeField] private float targetingRange = 3f; // Turret Range
 	[SerializeField] private float rotationSpeed = 200f; // Turret Rotation Speed
+	[SerializeField] private float bps = 1f; // Bullets Per Second
 
 	private Transform target;
-	private float attackInterval = 1f;
-	private float timeOnTarget = 0f;
+	private float timeUntilFire;
 
 	private void Update()
 	{
 		if (target == null)
 		{
-			timeOnTarget = 0f;
 			FindTarget();
 			return;
 		}
@@ -32,20 +35,24 @@ public class Turret : MonoBehaviour
 		if (!CheckTargetInRange())
 		{
 			target = null;
-			timeOnTarget = 0f;
 		}
-
-		if (target != null)
+		else
 		{
-			timeOnTarget += Time.deltaTime;
+			timeUntilFire += Time.deltaTime;
 
-			if (timeOnTarget > attackInterval)
+			if (timeUntilFire >= 1f / bps) // (1 sec / bullets per second)
 			{
-				target.GetComponent<EnemyHP>().healthPoints -= 50;
-				timeOnTarget = 0f;
-
+				Shoot();
+				timeUntilFire = 0f;
 			}
 		}
+	}
+
+	private void Shoot()
+	{
+		GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+		Wind_Bullet bulletScript = bulletObj.GetComponent<Wind_Bullet>();
+		bulletScript.SetTarget(target); // Sets bullet's target to current locked-on target
 	}
 	private void FindTarget() // The Tower's target finder
 	{
