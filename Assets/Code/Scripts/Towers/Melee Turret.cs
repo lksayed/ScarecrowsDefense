@@ -4,23 +4,28 @@ using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
 
-public class LeafblowerTurret : MonoBehaviour
+public class MeleeTurret : MonoBehaviour
 {
 	// Variables for "Ranged Turret"
 	[Header("References")]
 	[SerializeField] private Transform turretRotationPoint;
-	[SerializeField] private Transform firingPoint;
 	[SerializeField] private LayerMask enemyMask; // Allows turret to ignore map tiles
-	[SerializeField] private GameObject bulletPrefab;
-
 
 	[Header("Attribute")]
-	[SerializeField] private float targetingRange = 3f; // Turret Range
+	[SerializeField] private int meleeDamage = 100; // Turret damage
+	[SerializeField] private float targetingRange = 1.2f; // Turret Range
 	[SerializeField] private float rotationSpeed = 200f; // Turret Rotation Speed
-	[SerializeField] private float bps = 1f; // Bullets Per Second
+	[SerializeField] private float aps = 1f; // Attacks Per Second (Can be modified)
 
 	private Transform target;
-	private float timeUntilFire;
+	private Animator meleeAnimator;
+	private float timeBtwAtk;
+	private float startTimeBtwAtk;
+
+	private void Start()
+	{
+		meleeAnimator = GetComponent<Animator>();
+	}
 
 	private void Update()
 	{
@@ -38,28 +43,33 @@ public class LeafblowerTurret : MonoBehaviour
 		}
 		else
 		{
-			timeUntilFire += Time.deltaTime;
+			timeBtwAtk += Time.deltaTime; // Increments a timer for attacks in real time
 
-			if (timeUntilFire >= 1f / bps) // (1 sec / bullets per second)
+			if (timeBtwAtk >= 1f / aps)
 			{
-				Shoot();
-				timeUntilFire = 0f;
+				Attack();
+				
+				timeBtwAtk = 0f;
 			}
 		}
 	}
-
-	private void Shoot()
+	private void Attack()
 	{
-		GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-		Wind_Bullet bulletScript = bulletObj.GetComponent<Wind_Bullet>();
-		bulletScript.SetTarget(target); // Sets bullet's target to current locked-on target
+		Collider2D[] enemy = Physics2D.OverlapCircleAll(target.position, targetingRange, enemyMask);
+		for (int i = 0; i < enemy.Length; i++) // Applies damage to all enemies within range
+		{
+			enemy[i].GetComponent<EnemyHP>().TakeDamage(meleeDamage);
+		}
+		meleeAnimator.SetTrigger("Attack");
+		//Debug.Log("Scythe Attack");
 	}
+
 	private void FindTarget() // The Tower's target finder
 	{
 		RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange,
 		(Vector2)transform.position, 0f, enemyMask);
 
-		if (hits.Length > 0)
+		if (hits.Length > 0) // Note: Could be modified for target prioritization
 		{
 			target = hits[0].transform; // Gives transform of first enemy in range
 		}
@@ -77,11 +87,11 @@ public class LeafblowerTurret : MonoBehaviour
 		turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation,
 		targetRotation, rotationSpeed * Time.deltaTime); // Time.deltaTime ensures rotate speed remain constant
 	}
-	#if UNITY_EDITOR
+#if UNITY_EDITOR
 	private void OnDrawGizmosSelected() // Display gizmos of turret (Only in editor)
 	{
 		Handles.color = Color.blue;
 		Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 	}
-	#endif
+#endif
 }

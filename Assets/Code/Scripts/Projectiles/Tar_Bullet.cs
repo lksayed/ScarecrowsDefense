@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Wind_Bullet : MonoBehaviour
+public class Tar_Bullet : MonoBehaviour
 {
 	[Header("References")]
 	[SerializeField] private Rigidbody2D rb;
@@ -55,7 +55,7 @@ public class Wind_Bullet : MonoBehaviour
 				RaycastHit2D hit = hits[i];
 
 				EnemyMovement enemyMovement = hit.transform.GetComponent<EnemyMovement>();
-				enemyMovement.UpdateSpeed(0.5f);
+				enemyMovement.UpdateSpeed(0.8f);
 				StartCoroutine(ResetEnemySpeed(enemyMovement)); // May be removed
 			}
 		}
@@ -78,6 +78,7 @@ public class Wind_Bullet : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D other)
 	{
 		FreezeEnemies();
+		Destroy(gameObject);
 	}
 
 	#if UNITY_EDITOR

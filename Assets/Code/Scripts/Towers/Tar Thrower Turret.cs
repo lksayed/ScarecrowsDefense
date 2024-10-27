@@ -4,22 +4,23 @@ using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
 
-public class Base_Turret : MonoBehaviour
+public class TarthrowerTurret : MonoBehaviour
 {
 	// Variables for "Ranged Turret"
 	[Header("References")]
 	[SerializeField] private Transform turretRotationPoint;
+	[SerializeField] private Transform firingPoint;
 	[SerializeField] private LayerMask enemyMask; // Allows turret to ignore map tiles
+	[SerializeField] private GameObject bulletPrefab;
+
 
 	[Header("Attribute")]
 	[SerializeField] private float targetingRange = 3f; // Turret Range
 	[SerializeField] private float rotationSpeed = 200f; // Turret Rotation Speed
-	[SerializeField] private float aps = 1f; // Attacks Per Second (Can be modified)
+	[SerializeField] private float bps = 1f; // Bullets Per Second
 
 	private Transform target;
-	private float timeBtwAtk;
-
-	public float startTimeBtwAtk;
+	private float timeUntilFire;
 
 	private void Update()
 	{
@@ -37,22 +38,28 @@ public class Base_Turret : MonoBehaviour
 		}
 		else
 		{
-			timeBtwAtk += Time.deltaTime; // Increments a timer for attacks in real time
+			timeUntilFire += Time.deltaTime;
 
-			if (timeBtwAtk >= 1f / aps)
+			if (timeUntilFire >= 1f / bps) // (1 sec / bullets per second)
 			{
-				// This portion of code should be modified
-				timeBtwAtk = 0f;
+				Shoot();
+				timeUntilFire = 0f;
 			}
 		}
 	}
 
+	private void Shoot()
+	{
+		GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+		Tar_Bullet bulletScript = bulletObj.GetComponent<Tar_Bullet>();
+		bulletScript.SetTarget(target); // Sets bullet's target to current locked-on target
+	}
 	private void FindTarget() // The Tower's target finder
 	{
 		RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange,
 		(Vector2)transform.position, 0f, enemyMask);
 
-		if (hits.Length > 0) // Note: Could be modified for target prioritization
+		if (hits.Length > 0)
 		{
 			target = hits[0].transform; // Gives transform of first enemy in range
 		}
@@ -70,11 +77,11 @@ public class Base_Turret : MonoBehaviour
 		turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation,
 		targetRotation, rotationSpeed * Time.deltaTime); // Time.deltaTime ensures rotate speed remain constant
 	}
-#if UNITY_EDITOR
+	#if UNITY_EDITOR
 	private void OnDrawGizmosSelected() // Display gizmos of turret (Only in editor)
 	{
 		Handles.color = Color.blue;
 		Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 	}
-#endif
+	#endif
 }

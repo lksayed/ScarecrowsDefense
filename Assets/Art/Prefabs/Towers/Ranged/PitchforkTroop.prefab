@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 1738456690804901486}
   - component: {fileID: 245890170928011316}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: Pitchfork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
