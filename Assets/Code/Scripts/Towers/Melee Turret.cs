@@ -20,7 +20,6 @@ public class MeleeTurret : MonoBehaviour
 	private Transform target;
 	private Animator meleeAnimator;
 	private float timeBtwAtk;
-	private float startTimeBtwAtk;
 
 	private void Start()
 	{
@@ -48,7 +47,6 @@ public class MeleeTurret : MonoBehaviour
 			if (timeBtwAtk >= 1f / aps)
 			{
 				Attack();
-				
 				timeBtwAtk = 0f;
 			}
 		}
@@ -60,7 +58,7 @@ public class MeleeTurret : MonoBehaviour
 		{
 			enemy[i].GetComponent<EnemyHP>().TakeDamage(meleeDamage);
 		}
-		meleeAnimator.SetTrigger("Attack");
+		meleeAnimator.SetTrigger("Attack"); // Animation makes it look like scythe does damage
 		//Debug.Log("Scythe Attack");
 	}
 

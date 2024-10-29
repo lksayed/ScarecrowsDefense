@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3959971818562023731}
   - component: {fileID: 2323485904745612747}
+  - component: {fileID: 4058234455432999625}
   m_Layer: 0
   m_Name: PumpkinLauncher
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3503707353899754371}
   m_Father: {fileID: 0}
@@ -54,6 +55,27 @@ MonoBehaviour:
   targetingRange: 4.5
   rotationSpeed: 250
   bps: 0.25
+--- !u!95 &4058234455432999625
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801313037808600166}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: db923acd717051d4caf2b582882edd18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2876433094830287106
 GameObject:
   m_ObjectHideFlags: 0

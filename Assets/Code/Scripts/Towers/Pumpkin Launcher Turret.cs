@@ -51,7 +51,7 @@ public class PumpkinLauncherTurret : MonoBehaviour
 	private void Shoot()
 	{
 		GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-		Bullet bulletScript = bulletObj.GetComponent<Bullet>();
+		Pumpkin_Bullet bulletScript = bulletObj.GetComponent<Pumpkin_Bullet>();
 		bulletScript.SetTarget(target); // Sets bullet's target to current target
 	}
 	private void FindTarget() // The Tower's target finder

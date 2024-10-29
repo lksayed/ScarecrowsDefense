@@ -174,5 +174,5 @@ MonoBehaviour:
   rb: {fileID: 1266049672772190731}
   bulletDamage: 50
   bulletSpeed: 5
-  bulletLifeTime: 3
+  bulletLifeTime: 2
   rotateSpeed: 100

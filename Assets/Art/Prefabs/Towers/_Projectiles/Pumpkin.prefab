@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8618320177839440411}
   - component: {fileID: 6718337494851202423}
   - component: {fileID: 1266049672772190731}
-  - component: {fileID: 736081727528313546}
+  - component: {fileID: 5859377231268597975}
   m_Layer: 7
   m_Name: Pumpkin
   m_TagString: Untagged
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &736081727528313546
+--- !u!114 &5859377231268597975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,9 +158,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8668364877088270052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c84dd8d40b57e104c81d4d859e658e62, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d7a96ca989a89c409ca169a8ba339c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1266049672772190731}
-  bulletSpeed: 4
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
   bulletDamage: 100
+  bulletSpeed: 5
+  bulletLifeTime: 3
+  rotateSpeed: 100
+  spreadRange: 1

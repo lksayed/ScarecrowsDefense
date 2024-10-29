@@ -52,7 +52,7 @@ public class EnemyMovement : MonoBehaviour
 	// Used for slowdown turrets
 	public void UpdateSpeed(float newSpeed) 
    {
-        moveSpeed = newSpeed;
+      moveSpeed = newSpeed;
    }
 
    public void ResetSpeed()

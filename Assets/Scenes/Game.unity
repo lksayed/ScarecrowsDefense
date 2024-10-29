@@ -14163,10 +14163,10 @@ MonoBehaviour:
     prefab: {fileID: 107967042598430294, guid: 168bd19d6b70dda439963a9f0f0b3cd7, type: 3}
   - towerName: Scythe
     cost: 350
-    prefab: {fileID: 0}
-  - towerName: Leafblower
+    prefab: {fileID: 5477088914004396816, guid: 6ae1fb8e045bf4949b7c7a50f49df05f, type: 3}
+  - towerName: Tar Thrower
     cost: 500
-    prefab: {fileID: 0}
+    prefab: {fileID: 5348342950206264336, guid: eba0870c9e6412c4790d991c699f1c0e, type: 3}
   - towerName: Pumpkin Launcher
     cost: 1000
     prefab: {fileID: 801313037808600166, guid: feeb21ce179683c4b984c7ed43cbf032, type: 3}

@@ -169,7 +169,7 @@ MonoBehaviour:
     m_Bits: 64
   meleeDamage: 100
   targetingRange: 1.2
-  rotationSpeed: 200
+  rotationSpeed: 250
   aps: 1
 --- !u!95 &8134136991765531325
 Animator:
