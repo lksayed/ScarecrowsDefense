@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7945467625595905562}
   - component: {fileID: 3199277791578867450}
   m_Layer: 0
-  m_Name: PitchforkTroop
+  m_Name: Ranged Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8668364877088270052, guid: cad50be8aa71dc148822143528e0faf4, type: 3}
   bulletUpgrade: {fileID: 8668364877088270052, guid: 52effdaf7612bba43b9cebcb0a8039f9, type: 3}
   bulletUpgradeII: {fileID: 8668364877088270052, guid: d2f82c62c149a8742a71808990e3ef9c, type: 3}
-  upgradeUI: {fileID: 612893646378168658}
+  selectUI: {fileID: 612893646378168658}
   upgradeButton: {fileID: 2846068337472093507}
   upgradeBullet: {fileID: 21300000, guid: 8dca5cd31e783de4aabbcb2e7e077ffe, type: 3}
   upgradeBulletII: {fileID: 21300000, guid: 50747f097a7322f44967f79b24a4deb0, type: 3}

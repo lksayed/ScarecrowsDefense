@@ -11,9 +11,12 @@ public class Plot : MonoBehaviour
 	 private Sprite plotSprite;
 	 private GameObject towerObj;
 
-    public PitchforkTurret turret;
+    public RangedTurret turret;
+    public MeleeTurret turret2;
+	 public SlowTurret turret3;
+    public SplashTurret turret4;
 
-    private void Awake()
+	private void Awake()
     {
         plotSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
     }
@@ -29,10 +32,27 @@ public class Plot : MonoBehaviour
 
    private void OnMouseDown()
    {
+      if (UIManager.main.IsHoveringUI()) return;
+
       if (towerObj != null)
       {
-         turret.OpenUpgradeUI();
-         return;
+         if (towerObj.GetComponent<RangedTurret>())
+         {
+            turret.OpenUpgradeUI();
+         }
+			else if (towerObj.GetComponent<MeleeTurret>())
+			{
+				//turret2.OpenUpgradeUI();
+			}
+			else if (towerObj.GetComponent<SlowTurret>())
+         {
+            turret3.OpenUpgradeUI();
+         }
+			else if (towerObj.GetComponent<SplashTurret>())
+			{
+				turret4.OpenUpgradeUI();
+			}
+			return;
       }
 
       Tower buildTower = BuildManager.main.GetSelectedTower();
@@ -45,6 +65,22 @@ public class Plot : MonoBehaviour
       LevelManager.main.SpendCurrency(buildTower.cost); // Takes tower cost away from player's currency
 
       towerObj = Instantiate(buildTower.prefab, transform.position, Quaternion.identity);
-      turret = towerObj.GetComponent<PitchforkTurret>();
-   }
+      
+      if (towerObj.GetComponent<RangedTurret>())
+      {
+         turret = towerObj.GetComponent<RangedTurret>();
+      }
+      else if (towerObj.GetComponent<MeleeTurret>())
+      {
+         turret2 = towerObj.GetComponent<MeleeTurret>();
+      }
+		else if (towerObj.GetComponent<SlowTurret>())
+		{
+			turret3 = towerObj.GetComponent<SlowTurret>();
+		}
+		else if (towerObj.GetComponent<SplashTurret>())
+		{
+			turret4 = towerObj.GetComponent<SplashTurret>();
+		}
+	}
 }

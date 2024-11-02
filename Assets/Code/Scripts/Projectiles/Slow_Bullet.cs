@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class Pitchfork_Bullet : MonoBehaviour
+public class Slow_Bullet : MonoBehaviour
 {
 	[Header("References")]
 	[SerializeField] private Rigidbody2D rb;
+	[SerializeField] private LayerMask enemyMask; 
 
 	[Header("Attributes")]
-	[SerializeField] private int bulletDamage = 50;
 	[SerializeField] private float bulletSpeed = 5f;
-	[SerializeField] private float bulletLifeTime = 2f;
-	[SerializeField] private float rotateSpeed = 250f;
+	[SerializeField] private float bulletLifeTime = 3f;
+	[SerializeField] private float rotateSpeed = 100f;
+	[SerializeField] private float spreadRange = 1f; // Bullet Area-of-Effect
+	//[SerializeField] private float slowTime = 1f; // Slow-effect time in secs
 
 	private Transform target;
 	public void SetTarget(Transform _target)
@@ -39,6 +42,29 @@ public class Pitchfork_Bullet : MonoBehaviour
 		rb.velocity = direction * bulletSpeed; // Updates bullet speed
 		Destroy(gameObject, bulletLifeTime); // Destroys bullet after 'n' secs
 	}
+	private void FreezeEnemies()
+	{
+		RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, spreadRange,
+		(Vector2)transform.position, 0f, enemyMask);
+
+		if (hits.Length > 0)
+		{
+			for (int i = 0; i < hits.Length; i++)
+			{
+				RaycastHit2D hit = hits[i];
+
+				EnemyMovement enemyMovement = hit.transform.GetComponent<EnemyMovement>();
+				enemyMovement.UpdateSpeed(0.8f);
+				//StartCoroutine(ResetEnemySpeed(enemyMovement)); // May be removed
+			}
+		}
+	}
+	/*
+	private IEnumerator ResetEnemySpeed(EnemyMovement enemyMovement)
+	{
+		yield return new WaitForSeconds(slowTime);
+		enemyMovement.ResetSpeed();
+	}*/
 	private void SetRigidBodyDir() // Sets the firing direction of bullet.
 	{
 		float angle = Mathf.Atan2(target.position.y - transform.position.y,
@@ -49,8 +75,15 @@ public class Pitchfork_Bullet : MonoBehaviour
 	}
 	private void OnCollisionEnter2D(Collision2D other)
 	{
-		// Bullet finds enemy object's health script and applies damage to it
-		other.gameObject.GetComponent<EnemyHP>().TakeDamage(bulletDamage);
-		Destroy(gameObject); // Destroys bullet object upon collision
+		FreezeEnemies();
+		Destroy(gameObject);
 	}
+
+	#if UNITY_EDITOR
+	private void OnDrawGizmosSelected() // Display gizmos of turret (Only in editor)
+	{
+		Handles.color = Color.blue;
+		Handles.DrawWireDisc(transform.position, transform.forward, spreadRange);
+	}
+	#endif
 }

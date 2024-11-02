@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Pumpkin_Bullet : MonoBehaviour
+public class Splash_Bullet : MonoBehaviour
 {
 	[Header("References")]
 	[SerializeField] private Rigidbody2D rb;
 	[SerializeField] private LayerMask enemyMask;
 
 	[Header("Attributes")]
-	[SerializeField] private int bulletDamage = 100;
+	[SerializeField] private int bulletDamage = 150;
 	[SerializeField] private float bulletSpeed = 5f;
 	[SerializeField] private float bulletLifeTime = 3f;
 	[SerializeField] private float rotateSpeed = 100f;
@@ -42,7 +42,7 @@ public class Pumpkin_Bullet : MonoBehaviour
 		Collider2D[] enemy = Physics2D.OverlapCircleAll(target.position, spreadRange, enemyMask);
 		for (int i = 0; i < enemy.Length; i++) // Applies damage to all enemies within range
 		{
-			enemy[i].GetComponent<EnemyHP>().TakeDamage(bulletDamage);
+			enemy[i].GetComponent<EnemyHP>().TakeDamage(bulletDamage / 3); // Splashed enemies take half dmg
 		}
 
 	}
@@ -67,4 +67,5 @@ public class Pumpkin_Bullet : MonoBehaviour
 		Handles.DrawWireDisc(transform.position, transform.forward, spreadRange);
 	}
 #endif
+
 }

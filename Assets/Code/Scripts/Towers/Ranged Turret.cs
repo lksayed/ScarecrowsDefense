@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEditor;
 using Unity.VisualScripting;
 
-public class PitchforkTurret : MonoBehaviour
+public class RangedTurret : MonoBehaviour
 {
 	// Variables for "Ranged Turret"
 	[Header("References")]
@@ -15,7 +15,7 @@ public class PitchforkTurret : MonoBehaviour
 	[SerializeField] private GameObject bulletPrefab;
 	[SerializeField] private GameObject bulletUpgrade;
 	[SerializeField] private GameObject bulletUpgradeII;
-	[SerializeField] private GameObject upgradeUI;
+	[SerializeField] private GameObject selectUI;
 	[SerializeField] private Button upgradeButton;
 	[SerializeField] private Sprite upgradeBullet; // First Upgrade Sprite
 	[SerializeField] private Sprite upgradeBulletII; // Second Upgrade Sprite
@@ -42,6 +42,7 @@ public class PitchforkTurret : MonoBehaviour
 
 		upgradeButton.onClick.AddListener(UpgradeTurret);
 
+		// Finds "Weapon" sprite in parent object (the tower)
 		weaponSprite = this.transform.Find("RotationPoint").Find("Weapon").GetComponent<SpriteRenderer>();
 	}
 	private void Update()
@@ -73,7 +74,7 @@ public class PitchforkTurret : MonoBehaviour
 	private void Shoot()
 	{
 		GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-		Pitchfork_Bullet bulletScript = bulletObj.GetComponent<Pitchfork_Bullet>();
+		Ranged_Bullet bulletScript = bulletObj.GetComponent<Ranged_Bullet>();
 		bulletScript.SetTarget(target); // Sets bullet's target to current locked-on target
 	}
 	private void FindTarget() // The Tower's target finder
@@ -109,11 +110,11 @@ public class PitchforkTurret : MonoBehaviour
 	public void OpenUpgradeUI()
 	{
 		if (level == levelCap) return;
-		upgradeUI.SetActive(true);
+		selectUI.SetActive(true);
 	}
 	public void CloseUpgradeUI()
 	{
-		upgradeUI.SetActive(false);
+		selectUI.SetActive(false);
 		UIManager.main.SetHoveringState(false);
 	}
 
@@ -162,5 +163,4 @@ public class PitchforkTurret : MonoBehaviour
 
 		CloseUpgradeUI();
 	}
-
 }
