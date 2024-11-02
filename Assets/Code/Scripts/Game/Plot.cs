@@ -42,7 +42,7 @@ public class Plot : MonoBehaviour
          }
 			else if (towerObj.GetComponent<MeleeTurret>())
 			{
-				//turret2.OpenUpgradeUI();
+				turret2.OpenUpgradeUI();
 			}
 			else if (towerObj.GetComponent<SlowTurret>())
          {

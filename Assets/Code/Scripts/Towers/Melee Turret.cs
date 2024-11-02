@@ -1,28 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEditor;
 using Unity.VisualScripting;
 
 public class MeleeTurret : MonoBehaviour
 {
-	// Variables for "Ranged Turret"
+	// Variables for "Melee Turret"
 	[Header("References")]
 	[SerializeField] private Transform turretRotationPoint;
 	[SerializeField] private LayerMask enemyMask; // Allows turret to ignore map tiles
+	[SerializeField] private GameObject selectUI;
+	[SerializeField] private Button upgradeButton;
+	[SerializeField] private Sprite upgradeWeapon;
 
 	[Header("Attribute")]
 	[SerializeField] private int meleeDamage = 100; // Turret damage
-	[SerializeField] private float targetingRange = 1.2f; // Turret Range
+	[SerializeField] private float targetingRange = 1f; // Turret Range
 	[SerializeField] private float rotationSpeed = 200f; // Turret Rotation Speed
 	[SerializeField] private float aps = 1f; // Attacks Per Second (Can be modified)
+	[SerializeField] private int baseUpgradeCost = 350; // Initial upgrade cost
+	[SerializeField] private int levelCap = 2; // Tower upgrade cap
 
+	private SpriteRenderer weaponSprite;
 	private Transform target;
 	private Animator meleeAnimator;
 	private float timeBtwAtk;
+	private float targetingRangeBase;
+	private float apsBase;
+	private int level = 1;
 
 	private void Start()
 	{
+		// Initializes starting level stats of tower
+		apsBase = aps;
+		targetingRangeBase = targetingRange;
+
+		upgradeButton.onClick.AddListener(UpgradeTurret);
+
+		// Finds "Weapon" sprite in parent object (the tower)
+		weaponSprite = this.transform.Find("RotationPoint").Find("Scythe").GetComponent<SpriteRenderer>();
 		meleeAnimator = GetComponent<Animator>();
 	}
 
@@ -85,11 +103,53 @@ public class MeleeTurret : MonoBehaviour
 		turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation,
 		targetRotation, rotationSpeed * Time.deltaTime); // Time.deltaTime ensures rotate speed remain constant
 	}
-#if UNITY_EDITOR
+	#if UNITY_EDITOR
 	private void OnDrawGizmosSelected() // Display gizmos of turret (Only in editor)
 	{
 		Handles.color = Color.blue;
 		Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 	}
-#endif
+	#endif
+
+	public void OpenUpgradeUI()
+	{
+		if (level == levelCap) return;
+		selectUI.SetActive(true);
+	}
+	public void CloseUpgradeUI()
+	{
+		selectUI.SetActive(false);
+		UIManager.main.SetHoveringState(false);
+	}
+
+	private int CalculateCost() // Scales the cost of next upgrade
+	{
+		return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 1f));
+	}
+
+	public void UpgradeTurret() // Manages tower upgrade
+	{
+		// Checks if player has enough currency for upgrade
+		if (CalculateCost() > LevelManager.main.currency) return;
+
+		LevelManager.main.SpendCurrency(baseUpgradeCost);
+		//Debug.Log("Upgrade Cost: " + baseUpgradeCost);
+
+		// Assigns new stat values to tower
+		level++;
+		meleeDamage = 200;
+		aps = 2f;
+		targetingRange = 1.5f;
+
+		// Update upgrade cost
+		baseUpgradeCost = CalculateCost();
+
+		// Switches bullet prefabs per upgrade levels
+		if (level == 2)
+		{
+			weaponSprite.sprite = upgradeWeapon;
+		}
+
+		CloseUpgradeUI();
+	}
 }
