@@ -14073,6 +14073,7 @@ GameObject:
   - component: {fileID: 772696498}
   - component: {fileID: 772696500}
   - component: {fileID: 772696501}
+  - component: {fileID: 772696502}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -14170,6 +14171,18 @@ MonoBehaviour:
   - towerName: Pumpkin Launcher
     cost: 1000
     prefab: {fileID: 801313037808600166, guid: feeb21ce179683c4b984c7ed43cbf032, type: 3}
+--- !u!114 &772696502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772696497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ba155bd99f4b043bee86e5a688a6b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &777729564
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,9 @@ public class Plot : MonoBehaviour
     [SerializeField] private Sprite hoverSprite;
 
 	 private Sprite plotSprite;
-	 private GameObject tower;
+	 private GameObject towerObj;
+
+    public PitchforkTurret turret;
 
     private void Awake()
     {
@@ -25,19 +27,24 @@ public class Plot : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = plotSprite;
     }
 
-    private void OnMouseDown()
-    {
-      if (tower != null) return;
+   private void OnMouseDown()
+   {
+      if (towerObj != null)
+      {
+         turret.OpenUpgradeUI();
+         return;
+      }
 
-         Tower buildTower = BuildManager.main.GetSelectedTower();
+      Tower buildTower = BuildManager.main.GetSelectedTower();
 
-         if (buildTower.cost > LevelManager.main.currency) // Checks if player has enough currency for purchase
-         {
-            return;
-         }
+      if (buildTower.cost > LevelManager.main.currency) // Checks if player has enough currency for purchase
+      {
+         return;
+      }
 
-         LevelManager.main.SpendCurrency(buildTower.cost); // Takes tower cost away from player's currency
+      LevelManager.main.SpendCurrency(buildTower.cost); // Takes tower cost away from player's currency
 
-         Instantiate(buildTower.prefab, transform.position, Quaternion.identity);
-    }
+      towerObj = Instantiate(buildTower.prefab, transform.position, Quaternion.identity);
+      turret = towerObj.GetComponent<PitchforkTurret>();
+   }
 }
