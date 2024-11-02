@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1189266082651782777}
   - component: {fileID: 393532364658734972}
   m_Layer: 0
-  m_Name: tar
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

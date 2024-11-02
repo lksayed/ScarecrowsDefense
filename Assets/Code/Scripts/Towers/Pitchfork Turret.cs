@@ -17,7 +17,8 @@ public class PitchforkTurret : MonoBehaviour
 	[SerializeField] private GameObject bulletUpgradeII;
 	[SerializeField] private GameObject upgradeUI;
 	[SerializeField] private Button upgradeButton;
-	//[SerializeField] private Sprite upgradeBullet;
+	[SerializeField] private Sprite upgradeBullet; // First Upgrade Sprite
+	[SerializeField] private Sprite upgradeBulletII; // Second Upgrade Sprite
 
 	[Header("Attribute")]
 	[SerializeField] private float targetingRange = 3f; // Turret Range
@@ -26,6 +27,7 @@ public class PitchforkTurret : MonoBehaviour
 	[SerializeField] private int baseUpgradeCost = 100; // Initial upgrade cost
 	[SerializeField] private int levelCap = 3; // Tower upgrade cap
 
+	private SpriteRenderer weaponSprite;
 	private Transform target;
 	private float timeUntilFire;
 	private float targetingRangeBase;
@@ -40,7 +42,7 @@ public class PitchforkTurret : MonoBehaviour
 
 		upgradeButton.onClick.AddListener(UpgradeTurret);
 
-		//weaponSprite = this.transform.Find("Weapon").GetComponent<SpriteRenderer>();
+		weaponSprite = this.transform.Find("RotationPoint").Find("Weapon").GetComponent<SpriteRenderer>();
 	}
 	private void Update()
 	{
@@ -149,13 +151,13 @@ public class PitchforkTurret : MonoBehaviour
 		if (level == 2)
 		{
 			bulletPrefab = bulletUpgrade;
-			//weaponSprite.sprite = upgradeBullet;
+			weaponSprite.sprite = upgradeBullet;
 		}
 
 		if (level == 3)
 		{
 			bulletPrefab = bulletUpgradeII;
-			//weaponSprite.sprite = upgradeBulletII;
+			weaponSprite.sprite = upgradeBulletII;
 		}
 
 		CloseUpgradeUI();

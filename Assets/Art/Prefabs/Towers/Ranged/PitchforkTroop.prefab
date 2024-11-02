@@ -57,6 +57,8 @@ MonoBehaviour:
   bulletUpgradeII: {fileID: 8668364877088270052, guid: d2f82c62c149a8742a71808990e3ef9c, type: 3}
   upgradeUI: {fileID: 612893646378168658}
   upgradeButton: {fileID: 2846068337472093507}
+  upgradeBullet: {fileID: 21300000, guid: 8dca5cd31e783de4aabbcb2e7e077ffe, type: 3}
+  upgradeBulletII: {fileID: 21300000, guid: 50747f097a7322f44967f79b24a4deb0, type: 3}
   targetingRange: 3
   rotationSpeed: 300
   bps: 1
@@ -94,7 +96,7 @@ GameObject:
   - component: {fileID: 1738456690804901486}
   - component: {fileID: 245890170928011316}
   m_Layer: 0
-  m_Name: Pitchfork
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,8 +111,8 @@ Transform:
   m_GameObject: {fileID: 241247245120538329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2658772480261643046}
@@ -156,7 +158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 50747f097a7322f44967f79b24a4deb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e121ced3e532034d90cb7b75596b766, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -181,7 +183,7 @@ GameObject:
   - component: {fileID: 6300760454276647207}
   - component: {fileID: 913178890195649030}
   m_Layer: 5
-  m_Name: UpgradeUI
+  m_Name: SelectUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

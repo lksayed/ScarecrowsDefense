@@ -10,8 +10,8 @@ public class Pitchfork_Bullet : MonoBehaviour
 	[Header("Attributes")]
 	[SerializeField] private int bulletDamage = 50;
 	[SerializeField] private float bulletSpeed = 5f;
-	[SerializeField] private float bulletLifeTime = 3f;
-	[SerializeField] private float rotateSpeed = 100f;
+	[SerializeField] private float bulletLifeTime = 2f;
+	[SerializeField] private float rotateSpeed = 250f;
 
 	private Transform target;
 	public void SetTarget(Transform _target)
