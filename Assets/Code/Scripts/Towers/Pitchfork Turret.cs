@@ -13,8 +13,11 @@ public class PitchforkTurret : MonoBehaviour
 	[SerializeField] private Transform firingPoint;
 	[SerializeField] private LayerMask enemyMask; // Allows turret to ignore map tiles
 	[SerializeField] private GameObject bulletPrefab;
+	[SerializeField] private GameObject bulletUpgrade;
+	[SerializeField] private GameObject bulletUpgradeII;
 	[SerializeField] private GameObject upgradeUI;
 	[SerializeField] private Button upgradeButton;
+	//[SerializeField] private Sprite upgradeBullet;
 
 	[Header("Attribute")]
 	[SerializeField] private float targetingRange = 3f; // Turret Range
@@ -23,11 +26,10 @@ public class PitchforkTurret : MonoBehaviour
 	[SerializeField] private int baseUpgradeCost = 100; // Initial upgrade cost
 	[SerializeField] private int levelCap = 3; // Tower upgrade cap
 
-	private float bpsBase;
-	private float targetingRangeBase;
-
 	private Transform target;
 	private float timeUntilFire;
+	private float targetingRangeBase;
+	private float bpsBase;
 	private int level = 1;
 
 	private void Start()
@@ -104,7 +106,7 @@ public class PitchforkTurret : MonoBehaviour
 	#endif
 	public void OpenUpgradeUI()
 	{
-		//if (level == levelCap) return;
+		if (level == levelCap) return;
 		upgradeUI.SetActive(true);
 	}
 	public void CloseUpgradeUI()
@@ -143,7 +145,18 @@ public class PitchforkTurret : MonoBehaviour
 		// Update upgrade cost
 		baseUpgradeCost = CalculateCost();
 
-		
+		// Switches bullet prefabs per upgrade levels
+		if (level == 2)
+		{
+			bulletPrefab = bulletUpgrade;
+			//weaponSprite.sprite = upgradeBullet;
+		}
+
+		if (level == 3)
+		{
+			bulletPrefab = bulletUpgradeII;
+			//weaponSprite.sprite = upgradeBulletII;
+		}
 
 		CloseUpgradeUI();
 	}

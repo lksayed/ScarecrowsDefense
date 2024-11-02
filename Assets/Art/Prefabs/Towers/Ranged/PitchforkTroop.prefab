@@ -52,12 +52,16 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  bulletPrefab: {fileID: 8668364877088270052, guid: d2f82c62c149a8742a71808990e3ef9c, type: 3}
+  bulletPrefab: {fileID: 8668364877088270052, guid: cad50be8aa71dc148822143528e0faf4, type: 3}
+  bulletUpgrade: {fileID: 8668364877088270052, guid: 52effdaf7612bba43b9cebcb0a8039f9, type: 3}
+  bulletUpgradeII: {fileID: 8668364877088270052, guid: d2f82c62c149a8742a71808990e3ef9c, type: 3}
   upgradeUI: {fileID: 612893646378168658}
   upgradeButton: {fileID: 2846068337472093507}
   targetingRange: 3
   rotationSpeed: 300
   bps: 1
+  baseUpgradeCost: 100
+  levelCap: 3
 --- !u!95 &3199277791578867450
 Animator:
   serializedVersion: 5
@@ -278,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063d64f376103ae4487f23c24d9c0aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouse_over: 0
 --- !u!1 &1221483370155016265
 GameObject:
   m_ObjectHideFlags: 0
