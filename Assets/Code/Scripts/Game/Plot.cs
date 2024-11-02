@@ -9,9 +9,14 @@ public class Plot : MonoBehaviour
     [SerializeField] private Sprite hoverSprite;
 
 	 private Sprite plotSprite;
-	 private GameObject tower;
+	 private GameObject towerObj;
 
-    private void Awake()
+    public RangedTurret turret;
+    public MeleeTurret turret2;
+	 public SlowTurret turret3;
+    public SplashTurret turret4;
+
+	private void Awake()
     {
         plotSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
     }
@@ -25,19 +30,57 @@ public class Plot : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = plotSprite;
     }
 
-    private void OnMouseDown()
-    {
-      if (tower != null) return;
+   private void OnMouseDown()
+   {
+      if (UIManager.main.IsHoveringUI()) return;
 
-         Tower buildTower = BuildManager.main.GetSelectedTower();
-
-         if (buildTower.cost > LevelManager.main.currency) // Checks if player has enough currency for purchase
+      if (towerObj != null)
+      {
+         if (towerObj.GetComponent<RangedTurret>())
          {
-            return;
+            turret.OpenUpgradeUI();
          }
+			else if (towerObj.GetComponent<MeleeTurret>())
+			{
+				turret2.OpenUpgradeUI();
+			}
+			else if (towerObj.GetComponent<SlowTurret>())
+         {
+            turret3.OpenUpgradeUI();
+         }
+			else if (towerObj.GetComponent<SplashTurret>())
+			{
+				turret4.OpenUpgradeUI();
+			}
+			return;
+      }
 
-         LevelManager.main.SpendCurrency(buildTower.cost); // Takes tower cost away from player's currency
+      Tower buildTower = BuildManager.main.GetSelectedTower();
 
-         Instantiate(buildTower.prefab, transform.position, Quaternion.identity);
-    }
+      if (buildTower.cost > LevelManager.main.currency) // Checks if player has enough currency for purchase
+      {
+         return;
+      }
+
+      LevelManager.main.SpendCurrency(buildTower.cost); // Takes tower cost away from player's currency
+
+      towerObj = Instantiate(buildTower.prefab, transform.position, Quaternion.identity);
+      
+      if (towerObj.GetComponent<RangedTurret>())
+      {
+         turret = towerObj.GetComponent<RangedTurret>();
+      }
+      else if (towerObj.GetComponent<MeleeTurret>())
+      {
+         turret2 = towerObj.GetComponent<MeleeTurret>();
+      }
+		else if (towerObj.GetComponent<SlowTurret>())
+		{
+			turret3 = towerObj.GetComponent<SlowTurret>();
+		}
+		else if (towerObj.GetComponent<SplashTurret>())
+		{
+			turret4 = towerObj.GetComponent<SplashTurret>();
+		}
+	}
 }

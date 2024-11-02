@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pitchfork_Bullet : MonoBehaviour
+public class Ranged_Bullet : MonoBehaviour
 {
 	[Header("References")]
 	[SerializeField] private Rigidbody2D rb;
@@ -10,8 +10,8 @@ public class Pitchfork_Bullet : MonoBehaviour
 	[Header("Attributes")]
 	[SerializeField] private int bulletDamage = 50;
 	[SerializeField] private float bulletSpeed = 5f;
-	[SerializeField] private float bulletLifeTime = 3f;
-	[SerializeField] private float rotateSpeed = 100f;
+	[SerializeField] private float bulletLifeTime = 2f;
+	[SerializeField] private float rotateSpeed = 250f;
 
 	private Transform target;
 	public void SetTarget(Transform _target)

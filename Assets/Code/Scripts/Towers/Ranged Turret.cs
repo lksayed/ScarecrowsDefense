@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEditor;
 using Unity.VisualScripting;
 
-public class PitchforkTurret : MonoBehaviour
+public class RangedTurret : MonoBehaviour
 {
 	// Variables for "Ranged Turret"
 	[Header("References")]
@@ -12,16 +13,38 @@ public class PitchforkTurret : MonoBehaviour
 	[SerializeField] private Transform firingPoint;
 	[SerializeField] private LayerMask enemyMask; // Allows turret to ignore map tiles
 	[SerializeField] private GameObject bulletPrefab;
-
+	[SerializeField] private GameObject bulletUpgrade;
+	[SerializeField] private GameObject bulletUpgradeII;
+	[SerializeField] private GameObject selectUI;
+	[SerializeField] private Button upgradeButton;
+	[SerializeField] private Sprite upgradeBullet; // First Upgrade Sprite
+	[SerializeField] private Sprite upgradeBulletII; // Second Upgrade Sprite
 
 	[Header("Attribute")]
 	[SerializeField] private float targetingRange = 3f; // Turret Range
 	[SerializeField] private float rotationSpeed = 200f; // Turret Rotation Speed
 	[SerializeField] private float bps = 1f; // Bullets Per Second
+	[SerializeField] private int baseUpgradeCost = 100; // Initial upgrade cost
+	[SerializeField] private int levelCap = 3; // Tower upgrade cap
 
+	private SpriteRenderer weaponSprite;
 	private Transform target;
 	private float timeUntilFire;
+	private float targetingRangeBase;
+	private float bpsBase;
+	private int level = 1;
 
+	private void Start()
+	{
+		// Initializes starting level stats of tower
+		bpsBase = bps;
+		targetingRangeBase = targetingRange;
+
+		upgradeButton.onClick.AddListener(UpgradeTurret);
+
+		// Finds "Weapon" sprite in parent object (the tower)
+		weaponSprite = this.transform.Find("RotationPoint").Find("Weapon").GetComponent<SpriteRenderer>();
+	}
 	private void Update()
 	{
 		if (target == null)
@@ -51,7 +74,7 @@ public class PitchforkTurret : MonoBehaviour
 	private void Shoot()
 	{
 		GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-		Pitchfork_Bullet bulletScript = bulletObj.GetComponent<Pitchfork_Bullet>();
+		Ranged_Bullet bulletScript = bulletObj.GetComponent<Ranged_Bullet>();
 		bulletScript.SetTarget(target); // Sets bullet's target to current locked-on target
 	}
 	private void FindTarget() // The Tower's target finder
@@ -84,4 +107,60 @@ public class PitchforkTurret : MonoBehaviour
 		Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 	}
 	#endif
+	public void OpenUpgradeUI()
+	{
+		if (level == levelCap) return;
+		selectUI.SetActive(true);
+	}
+	public void CloseUpgradeUI()
+	{
+		selectUI.SetActive(false);
+		UIManager.main.SetHoveringState(false);
+	}
+
+	private int CalculateCost() // Scales the cost of next upgrade
+	{
+		return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 1f));
+	}
+
+	private float CalculateBPS() // Increases tower fire rate
+	{
+		return bpsBase * Mathf.Pow(level, 1f);
+	}
+	private float CalculateRange() // Increases tower firing range
+	{
+		return targetingRangeBase * Mathf.Pow(level, .2f);
+	}
+
+	public void UpgradeTurret() // Manages tower upgrade
+	{
+		// Checks if player has enough currency for upgrade
+		if (CalculateCost() > LevelManager.main.currency) return;
+
+		LevelManager.main.SpendCurrency(baseUpgradeCost);
+		//Debug.Log("Upgrade Cost: " + baseUpgradeCost);
+
+		// Assigns new stat values to tower
+		level++;
+		bps = CalculateBPS();
+		targetingRange = CalculateRange();
+
+		// Update upgrade cost
+		baseUpgradeCost = CalculateCost();
+
+		// Switches bullet prefabs per upgrade levels
+		if (level == 2)
+		{
+			bulletPrefab = bulletUpgrade;
+			weaponSprite.sprite = upgradeBullet;
+		}
+
+		if (level == 3)
+		{
+			bulletPrefab = bulletUpgradeII;
+			weaponSprite.sprite = upgradeBulletII;
+		}
+
+		CloseUpgradeUI();
+	}
 }

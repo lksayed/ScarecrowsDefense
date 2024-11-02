@@ -14073,6 +14073,7 @@ GameObject:
   - component: {fileID: 772696498}
   - component: {fileID: 772696500}
   - component: {fileID: 772696501}
+  - component: {fileID: 772696502}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -14158,18 +14159,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towers:
-  - towerName: Pitchfork
+  - towerName: Ranged Tower
     cost: 200
     prefab: {fileID: 107967042598430294, guid: 168bd19d6b70dda439963a9f0f0b3cd7, type: 3}
-  - towerName: Scythe
+  - towerName: Melee Tower
     cost: 350
     prefab: {fileID: 5477088914004396816, guid: 6ae1fb8e045bf4949b7c7a50f49df05f, type: 3}
-  - towerName: Tar Thrower
+  - towerName: Slow Tower
     cost: 500
     prefab: {fileID: 5348342950206264336, guid: eba0870c9e6412c4790d991c699f1c0e, type: 3}
-  - towerName: Pumpkin Launcher
+  - towerName: Splash Tower
     cost: 1000
     prefab: {fileID: 801313037808600166, guid: feeb21ce179683c4b984c7ed43cbf032, type: 3}
+--- !u!114 &772696502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772696497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ba155bd99f4b043bee86e5a688a6b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &777729564
 GameObject:
   m_ObjectHideFlags: 0

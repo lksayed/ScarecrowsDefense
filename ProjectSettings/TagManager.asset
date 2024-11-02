@@ -50,3 +50,6 @@ TagManager:
   - name: Turret Layer
     uniqueID: 3925532153
     locked: 0
+  - name: UI Layer
+    uniqueID: 728303297
+    locked: 0
