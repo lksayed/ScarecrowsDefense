@@ -165,7 +165,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  bulletDamage: 210
+  bulletDamage: 300
   bulletSpeed: 5
   bulletLifeTime: 3
   rotateSpeed: 100

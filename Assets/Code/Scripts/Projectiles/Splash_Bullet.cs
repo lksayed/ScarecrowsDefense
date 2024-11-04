@@ -42,7 +42,7 @@ public class Splash_Bullet : MonoBehaviour
 		Collider2D[] enemy = Physics2D.OverlapCircleAll(target.position, spreadRange, enemyMask);
 		for (int i = 0; i < enemy.Length; i++) // Applies damage to all enemies within range
 		{
-			enemy[i].GetComponent<EnemyHP>().TakeDamage(bulletDamage / 3); // Splashed enemies take half dmg
+			enemy[i].GetComponent<EnemyHP>().TakeDamage(bulletDamage);
 		}
 
 	}
