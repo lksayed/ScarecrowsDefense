@@ -13,7 +13,7 @@ public class Splash_Bullet : MonoBehaviour
 	[SerializeField] private int bulletDamage = 150;
 	[SerializeField] private float bulletSpeed = 5f;
 	[SerializeField] private float bulletLifeTime = 3f;
-	[SerializeField] private float rotateSpeed = 100f;
+	//[SerializeField] private float rotateSpeed = 100f;
 	[SerializeField] private float spreadRange = 1f; // Bullet Area-of-Effect
 
 	private Transform target;
@@ -26,7 +26,7 @@ public class Splash_Bullet : MonoBehaviour
 	public void SetTarget(Transform _target)
 	{
 		target = _target;
-		//Destroy(gameObject, 3f); // Destroys bullet object via timer
+		Destroy(gameObject, bulletLifeTime); // Destroys bullet object via timer
 	}
 	private void FixedUpdate()
 	{

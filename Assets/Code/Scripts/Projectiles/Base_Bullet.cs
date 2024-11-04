@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 	[SerializeField] private int bulletDamage = 50;
 	[SerializeField] private float bulletSpeed = 5f;
 	[SerializeField] private float bulletLifeTime = 3f;
-	[SerializeField] private float rotateSpeed = 100f;
+	//[SerializeField] private float rotateSpeed = 100f;
 
 	private Transform target;
 	private void Start()
@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
 	public void SetTarget(Transform _target)
 	{
 		target = _target;
-		//Destroy(gameObject, 3f); // Destroys bullet object via timer
+		Destroy(gameObject, bulletLifeTime); // Destroys bullet object via timer
 	}
 	private void FixedUpdate()
 	{

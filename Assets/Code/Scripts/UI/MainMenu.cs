@@ -6,18 +6,20 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    GameObject playButton;
-    GameObject helpButton;
-    GameObject quitButton;
-    GameObject backButton;
-    GameObject instructions;
-    public void PlayGame()
+   GameObject playButton;
+   GameObject helpButton;
+   GameObject quitButton;
+   GameObject backButton;
+   GameObject instructions;
+	public void PlayGame()
    {
       // Loads a specified scene after user clicks button
-      SceneManager.LoadSceneAsync(1); // Uses scene index or name
+      // You can find scenes in Unity through "File -> Build Settings -> Scenes In Build"
+      // For below: Either use scene index shown in "Scenes In Build" window or
+      // string of scene name.
+      SceneManager.LoadSceneAsync("Level Select");
    }
-
-   public void QuitGame()
+	public void QuitGame()
    {
       // Enables the game to be exited
       Application.Quit();
@@ -50,7 +52,7 @@ public class MainMenu : MonoBehaviour
        backButton = GameObject.Find("Back");
        instructions = GameObject.Find("InstructionText");
 
-       backButton.SetActive(false);
+		 backButton.SetActive(false);
        instructions.SetActive(false);
     }
 }

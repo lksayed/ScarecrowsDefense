@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEditor;
 using Unity.VisualScripting;
 
-public class SlowTurret : MonoBehaviour
+public class RangedTurret : MonoBehaviour
 {
 	// Variables for "Ranged Turret"
 	[Header("References")]
@@ -21,11 +21,10 @@ public class SlowTurret : MonoBehaviour
 	[SerializeField] private Sprite upgradeBulletII; // Second Upgrade Sprite
 
 	[Header("Attribute")]
-	[SerializeField] private float targetingRange = 2f; // Turret Range
+	[SerializeField] private float targetingRange = 3f; // Turret Range
 	[SerializeField] private float rotationSpeed = 300f; // Turret Rotation Speed
-	[SerializeField] private float bps = 0.3f; // Bullets Per Second
-	[SerializeField] private int baseUpgradeCost = 200; // Initial upgrade cost
-	[SerializeField] private int levelCap = 3; // Tower upgrade cap
+	[SerializeField] private float bps = 1f; // Bullets Per Second
+	[SerializeField] private int baseUpgradeCost = 100; // Initial upgrade cost
 
 	private SpriteRenderer weaponSprite;
 	private Transform target;
@@ -70,10 +69,11 @@ public class SlowTurret : MonoBehaviour
 			}
 		}
 	}
+
 	private void Shoot()
 	{
 		GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-		Slow_Bullet bulletScript = bulletObj.GetComponent<Slow_Bullet>();
+		Ranged_Bullet bulletScript = bulletObj.GetComponent<Ranged_Bullet>();
 		bulletScript.SetTarget(target); // Sets bullet's target to current locked-on target
 	}
 	private void FindTarget() // The Tower's target finder
@@ -81,7 +81,7 @@ public class SlowTurret : MonoBehaviour
 		RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange,
 		(Vector2)transform.position, 0f, enemyMask);
 
-		if (hits.Length > 0)
+		if (hits.Length > 0) // Note: Could be modified for target prioritization
 		{
 			target = hits[0].transform; // Gives transform of first enemy in range
 		}
@@ -105,7 +105,7 @@ public class SlowTurret : MonoBehaviour
 		Handles.color = Color.blue;
 		Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 	}
-#endif
+	#endif
 	public void OpenUpgradeUI()
 	{
 		selectUI.SetActive(true);
@@ -124,37 +124,36 @@ public class SlowTurret : MonoBehaviour
 		LevelManager.main.SpendCurrency(baseUpgradeCost);
 		//Debug.Log("Upgrade Cost: " + baseUpgradeCost);
 
-		level++;		
+		level++;
 
 		// Switches bullet prefabs per upgrade levels
 		if (level == 2)
 		{
 			// Assigns new stat values to tower
-			bps = 0.6f;
-			targetingRange = 2.3f;
+			bps = 2;
+			targetingRange = 3.5f;
 
 			// Changes respective sprites
 			bulletPrefab = bulletUpgrade;
 			weaponSprite.sprite = upgradeBullet;
 
 			// Update upgrade cost
-			baseUpgradeCost = 250;
+			baseUpgradeCost = 150;
 		}
 
 		if (level == 3)
 		{
 			// Assigns new stat values to tower
-			bps = 0.9f;
-			targetingRange = 2.5f;
+			bps = 3;
+			targetingRange = 4f;
 
 			// Changes respective sprites
 			bulletPrefab = bulletUpgradeII;
 			weaponSprite.sprite = upgradeBulletII;
 
 			// Diables upgrade button once tower upgrade reaches max
-			upgradeButton.interactable = false;
+			upgradeButton.interactable = false; 
 		}
-
 		CloseUpgradeUI();
 	}
 }
