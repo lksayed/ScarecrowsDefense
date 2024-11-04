@@ -21,9 +21,9 @@ public class SplashTurret : MonoBehaviour
 	[SerializeField] private Sprite upgradeBulletII; // Second Upgrade Sprite
 
 	[Header("Attribute")]
-	[SerializeField] private float targetingRange = 3f; // Turret Range
-	[SerializeField] private float rotationSpeed = 200f; // Turret Rotation Speed
-	[SerializeField] private float bps = 1f; // Bullets Per Second
+	[SerializeField] private float targetingRange = 4.5f; // Turret Range
+	[SerializeField] private float rotationSpeed = 250f; // Turret Rotation Speed
+	[SerializeField] private float bps = 0.5f; // Bullets Per Second
 	[SerializeField] private int baseUpgradeCost = 500; // Initial upgrade cost
 	[SerializeField] private int levelCap = 3; // Tower upgrade cap
 
@@ -118,45 +118,38 @@ public class SplashTurret : MonoBehaviour
 		UIManager.main.SetHoveringState(false);
 	}
 
-	private int CalculateCost() // Scales the cost of next upgrade
-	{
-		return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, .5f));
-	}
-
-	private float CalculateBPS() // Increases tower fire rate
-	{
-		return bpsBase * Mathf.Pow(level, .55f);
-	}
-	private float CalculateRange() // Increases tower firing range
-	{
-		return targetingRangeBase * Mathf.Pow(level, .2f);
-	}
-
 	public void UpgradeTurret() // Manages tower upgrade
 	{
 		// Checks if player has enough currency for upgrade
-		if (CalculateCost() > LevelManager.main.currency) return;
+		if (baseUpgradeCost > LevelManager.main.currency) return;
 
 		LevelManager.main.SpendCurrency(baseUpgradeCost);
 		//Debug.Log("Upgrade Cost: " + baseUpgradeCost);
 
-		// Assigns new stat values to tower
-		level++;
-		bps = CalculateBPS();
-		targetingRange = CalculateRange();
-
-		// Update upgrade cost
-		baseUpgradeCost = CalculateCost();
+		level++;		
 
 		// Switches bullet prefabs per upgrade levels
 		if (level == 2)
 		{
+			// Assigns new stat values to tower
+			bps = 0.75f;
+			targetingRange = 5f;
+
+			// Switches respective sprites
 			bulletPrefab = bulletUpgrade;
 			weaponSprite.sprite = upgradeBullet;
+
+			// Update upgrade cost
+			baseUpgradeCost = 800;
 		}
 
 		if (level == 3)
 		{
+			// Assigns new stat values to tower
+			bps = 1f;
+			targetingRange = 5.5f;
+
+			// Switches respective sprites
 			bulletPrefab = bulletUpgradeII;
 			weaponSprite.sprite = upgradeBulletII;
 		}

@@ -20,7 +20,7 @@ public class MeleeTurret : MonoBehaviour
 	[SerializeField] private float targetingRange = 1f; // Turret Range
 	[SerializeField] private float rotationSpeed = 200f; // Turret Rotation Speed
 	[SerializeField] private float aps = 1f; // Attacks Per Second (Can be modified)
-	[SerializeField] private int baseUpgradeCost = 350; // Initial upgrade cost
+	[SerializeField] private int baseUpgradeCost = 300; // Initial upgrade cost
 	[SerializeField] private int levelCap = 2; // Tower upgrade cap
 
 	private SpriteRenderer weaponSprite;
@@ -122,31 +122,25 @@ public class MeleeTurret : MonoBehaviour
 		UIManager.main.SetHoveringState(false);
 	}
 
-	private int CalculateCost() // Scales the cost of next upgrade
-	{
-		return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 1f));
-	}
-
 	public void UpgradeTurret() // Manages tower upgrade
 	{
 		// Checks if player has enough currency for upgrade
-		if (CalculateCost() > LevelManager.main.currency) return;
+		if (baseUpgradeCost > LevelManager.main.currency) return;
 
 		LevelManager.main.SpendCurrency(baseUpgradeCost);
 		//Debug.Log("Upgrade Cost: " + baseUpgradeCost);
 
-		// Assigns new stat values to tower
 		level++;
-		meleeDamage = 200;
-		aps = 2f;
-		targetingRange = 1.5f;
-
-		// Update upgrade cost
-		baseUpgradeCost = CalculateCost();
 
 		// Switches bullet prefabs per upgrade levels
 		if (level == 2)
 		{
+			// Assigns new stat values to tower
+			meleeDamage = 200;
+			aps = 2f;
+			targetingRange = 1.5f;
+
+			// Switches weapon sprite
 			weaponSprite.sprite = upgradeWeapon;
 		}
 
