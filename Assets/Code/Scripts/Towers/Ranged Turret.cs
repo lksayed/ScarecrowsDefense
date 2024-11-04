@@ -109,7 +109,6 @@ public class RangedTurret : MonoBehaviour
 	#endif
 	public void OpenUpgradeUI()
 	{
-		if (level == levelCap) return;
 		selectUI.SetActive(true);
 	}
 	public void CloseUpgradeUI()
@@ -152,8 +151,10 @@ public class RangedTurret : MonoBehaviour
 			// Changes respective sprites
 			bulletPrefab = bulletUpgradeII;
 			weaponSprite.sprite = upgradeBulletII;
-		}
 
+			// Diables upgrade button once tower upgrade reaches max
+			upgradeButton.interactable = false; 
+		}
 		CloseUpgradeUI();
 	}
 }

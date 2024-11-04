@@ -142,6 +142,9 @@ public class MeleeTurret : MonoBehaviour
 
 			// Switches weapon sprite
 			weaponSprite.sprite = upgradeWeapon;
+
+			// Diables upgrade button once tower upgrade reaches max
+			upgradeButton.interactable = false;
 		}
 
 		CloseUpgradeUI();

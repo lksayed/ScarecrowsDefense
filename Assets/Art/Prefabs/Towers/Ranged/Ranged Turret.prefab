@@ -64,6 +64,7 @@ MonoBehaviour:
   bps: 1
   baseUpgradeCost: 100
   levelCap: 3
+  buttonText: {fileID: 0}
 --- !u!95 &3199277791578867450
 Animator:
   serializedVersion: 5

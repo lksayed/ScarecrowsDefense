@@ -152,6 +152,9 @@ public class SplashTurret : MonoBehaviour
 			// Switches respective sprites
 			bulletPrefab = bulletUpgradeII;
 			weaponSprite.sprite = upgradeBulletII;
+
+			// Diables upgrade button once tower upgrade reaches max
+			upgradeButton.interactable = false;
 		}
 
 		CloseUpgradeUI();
