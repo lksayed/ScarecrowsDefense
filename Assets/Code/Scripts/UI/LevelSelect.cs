@@ -11,19 +11,24 @@ public class LevelSelect : MonoBehaviour
 	GameObject hardButton;
 	GameObject backButton;
 
+	public static int level = 0;
+
 	public void PlayEasy()
 	{
-		SceneManager.LoadSceneAsync("Easy Map");
+		level = 0;
+		SceneManager.LoadSceneAsync("Game");
 	}
 
 	public void PlayMedium()
 	{
-		SceneManager.LoadSceneAsync("Medium Map");
+		level = 1;
+        SceneManager.LoadSceneAsync("Game");
 	}
 
 	public void PlayHard()
 	{
-		SceneManager.LoadSceneAsync("Hard Map");
+		level = 2;
+		SceneManager.LoadSceneAsync("Game");
 	}
 
 	public void BackButton()
