@@ -12,10 +12,16 @@ public class SplashTurret : MonoBehaviour
 	[SerializeField] private Transform turretRotationPoint;
 	[SerializeField] private Transform firingPoint;
 	[SerializeField] private LayerMask enemyMask; // Allows turret to ignore map tiles
+	[SerializeField] private GameObject turretBase;
+	[SerializeField] private GameObject scarecrow;
+	[SerializeField] private GameObject weapon;
 	[SerializeField] private GameObject bulletPrefab;
 	[SerializeField] private GameObject bulletUpgrade;
 	[SerializeField] private GameObject bulletUpgradeII;
 	[SerializeField] private GameObject selectUI;
+	[SerializeField] private GameObject rangeI;
+	[SerializeField] private GameObject rangeII;
+	[SerializeField] private GameObject rangeIII;
 	[SerializeField] private Button sellButton;
 	[SerializeField] private Button upgradeButton;
 	[SerializeField] private Sprite upgradeBullet; // First Upgrade Sprite
@@ -139,6 +145,10 @@ public class SplashTurret : MonoBehaviour
 			bulletPrefab = bulletUpgrade;
 			weaponSprite.sprite = upgradeBullet;
 
+			// Switch Range Circle
+			rangeI.SetActive(false);
+			rangeII.SetActive(true);
+
 			// Update upgrade cost
 			baseUpgradeCost = 750;
 
@@ -155,6 +165,15 @@ public class SplashTurret : MonoBehaviour
 			// Switches respective sprites
 			bulletPrefab = bulletUpgradeII;
 			weaponSprite.sprite = upgradeBulletII;
+
+			// Catapult appears!
+			turretBase.SetActive(true);
+			weapon.SetActive(false);
+			scarecrow.SetActive(false);
+
+			// Switch Range Circle
+			rangeII.SetActive(false);
+			rangeIII.SetActive(true);
 
 			// Update upgrade cost
 			baseUpgradeCost = 1125;

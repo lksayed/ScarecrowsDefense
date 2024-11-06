@@ -12,6 +12,8 @@ public class MeleeTurret : MonoBehaviour
 	[SerializeField] private Transform turretRotationPoint;
 	[SerializeField] private LayerMask enemyMask; // Allows turret to ignore map tiles
 	[SerializeField] private GameObject selectUI;
+	[SerializeField] private GameObject rangeI;
+	[SerializeField] private GameObject rangeII;
 	[SerializeField] private Button sellButton;
 	[SerializeField] private Button upgradeButton;
 	[SerializeField] private Sprite upgradeWeapon;
@@ -142,6 +144,10 @@ public class MeleeTurret : MonoBehaviour
 
 			// Switches weapon sprite
 			weaponSprite.sprite = upgradeWeapon;
+
+			// Switch Range Circle
+			rangeI.SetActive(false);
+			rangeII.SetActive(true);
 
 			// Update upgrade cost
 			baseUpgradeCost = 263;

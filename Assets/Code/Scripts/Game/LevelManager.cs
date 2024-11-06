@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        currency = 25000;
+        currency = 500;
         playerHP = 50;
 
         GameObject background = GameObject.Find("BackgroundSprite");
@@ -103,9 +103,15 @@ public class LevelManager : MonoBehaviour
         {
             SceneManager.LoadScene("Lose");
         }
+
         if (GetComponent<EnemySpawner>().currentWave > 10)
         {
             SceneManager.LoadScene("Win");
+        }
+
+        if (Input.GetKeyDown(KeyCode.X)) // Cheat Money Key
+        {
+            IncreaseCurrency(1000);
         }
     }
 }

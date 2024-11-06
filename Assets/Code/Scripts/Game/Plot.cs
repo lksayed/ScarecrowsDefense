@@ -10,18 +10,18 @@ public class Plot : MonoBehaviour
     [SerializeField] private Sprite invalidSprite;
 
     private Sprite plotSprite;
-	private GameObject towerObj;
+	 private GameObject towerObj;
 
     public RangedTurret turret;
     public MeleeTurret turret2;
-	public SlowTurret turret3;
+	 public SlowTurret turret3;
     public SplashTurret turret4;
 
     public bool isValid = true;
 
-	private void Awake()
+	 private void Awake()
     {
-        plotSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+      plotSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
     }
 
     private void Start()

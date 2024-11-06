@@ -16,6 +16,9 @@ public class SlowTurret : MonoBehaviour
 	[SerializeField] private GameObject bulletUpgrade;
 	[SerializeField] private GameObject bulletUpgradeII;
 	[SerializeField] private GameObject selectUI;
+	[SerializeField] private GameObject rangeI;
+	[SerializeField] private GameObject rangeII;
+	[SerializeField] private GameObject rangeIII;
 	[SerializeField] private Button sellButton;
 	[SerializeField] private Button upgradeButton;
 	[SerializeField] private Sprite upgradeBullet; // First Upgrade Sprite
@@ -138,6 +141,10 @@ public class SlowTurret : MonoBehaviour
 			bulletPrefab = bulletUpgrade;
 			weaponSprite.sprite = upgradeBullet;
 
+			// Switch Range Circle
+			rangeI.SetActive(false);
+			rangeII.SetActive(true);
+
 			// Update upgrade cost
 			baseUpgradeCost = 375;
 
@@ -154,6 +161,10 @@ public class SlowTurret : MonoBehaviour
 			// Changes respective sprites
 			bulletPrefab = bulletUpgradeII;
 			weaponSprite.sprite = upgradeBulletII;
+
+			// Switch Range Circle
+			rangeII.SetActive(false);
+			rangeIII.SetActive(true);
 
 			// Update upgrade cost
 			baseUpgradeCost = 563;

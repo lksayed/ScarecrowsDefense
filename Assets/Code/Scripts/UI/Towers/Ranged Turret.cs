@@ -16,6 +16,9 @@ public class RangedTurret : MonoBehaviour
 	[SerializeField] private GameObject bulletUpgrade;
 	[SerializeField] private GameObject bulletUpgradeII;
 	[SerializeField] private GameObject selectUI;
+	[SerializeField] private GameObject rangeI;
+	[SerializeField] private GameObject rangeII;
+	[SerializeField] private GameObject rangeIII;
 	[SerializeField] private Button sellButton;
 	[SerializeField] private Button upgradeButton;
 	[SerializeField] private Sprite upgradeBullet; // First Upgrade Sprite
@@ -43,7 +46,7 @@ public class RangedTurret : MonoBehaviour
 		upgradeButton.onClick.AddListener(UpgradeTurret);
 		sellButton.onClick.AddListener(SellTurret);
 
-		// Finds "Weapon" sprite in parent object (the tower)
+		// Find respective sprites in parent object (the tower)
 		weaponSprite = this.transform.Find("RotationPoint").Find("Weapon").GetComponent<SpriteRenderer>();
 	}
 	private void Update()
@@ -132,12 +135,16 @@ public class RangedTurret : MonoBehaviour
 		if (level == 2)
 		{
 			// Assigns new stat values to tower
-			bps = 2;
-			targetingRange = 3.5f;
+			bps = 1.5f;
+			targetingRange = 3.25f;
 
 			// Changes respective sprites
 			bulletPrefab = bulletUpgrade;
 			weaponSprite.sprite = upgradeBullet;
+
+			// Switch Range Circle
+			rangeI.SetActive(false);
+			rangeII.SetActive(true);
 
 			// Update upgrade cost
 			baseUpgradeCost = 150;
@@ -146,12 +153,16 @@ public class RangedTurret : MonoBehaviour
 		if (level == 3)
 		{
 			// Assigns new stat values to tower
-			bps = 3;
-			targetingRange = 4f;
+			bps = 2f;
+			targetingRange = 3.5f;
 
 			// Changes respective sprites
 			bulletPrefab = bulletUpgradeII;
 			weaponSprite.sprite = upgradeBulletII;
+
+			// Switch Range Circle
+			rangeII.SetActive(false);
+			rangeIII.SetActive(true);
 
 			// Update upgrade cost
 			baseUpgradeCost = 225; 
