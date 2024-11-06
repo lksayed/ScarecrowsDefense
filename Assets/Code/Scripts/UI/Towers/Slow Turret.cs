@@ -16,6 +16,7 @@ public class SlowTurret : MonoBehaviour
 	[SerializeField] private GameObject bulletUpgrade;
 	[SerializeField] private GameObject bulletUpgradeII;
 	[SerializeField] private GameObject selectUI;
+	[SerializeField] private Button sellButton;
 	[SerializeField] private Button upgradeButton;
 	[SerializeField] private Sprite upgradeBullet; // First Upgrade Sprite
 	[SerializeField] private Sprite upgradeBulletII; // Second Upgrade Sprite
@@ -24,7 +25,7 @@ public class SlowTurret : MonoBehaviour
 	[SerializeField] private float targetingRange = 2f; // Turret Range
 	[SerializeField] private float rotationSpeed = 300f; // Turret Rotation Speed
 	[SerializeField] private float bps = 0.3f; // Bullets Per Second
-	[SerializeField] private int baseUpgradeCost = 200; // Initial upgrade cost
+	[SerializeField] private int baseUpgradeCost = 250; // Initial upgrade cost
 
 	private SpriteRenderer weaponSprite;
 	private Transform target;
@@ -40,6 +41,7 @@ public class SlowTurret : MonoBehaviour
 		targetingRangeBase = targetingRange;
 
 		upgradeButton.onClick.AddListener(UpgradeTurret);
+		sellButton.onClick.AddListener(SellTurret);
 
 		// Finds "Weapon" sprite in parent object (the tower)
 		weaponSprite = this.transform.Find("RotationPoint").Find("Weapon").GetComponent<SpriteRenderer>();
@@ -137,7 +139,10 @@ public class SlowTurret : MonoBehaviour
 			weaponSprite.sprite = upgradeBullet;
 
 			// Update upgrade cost
-			baseUpgradeCost = 250;
+			baseUpgradeCost = 375;
+
+			// Diables upgrade button once tower upgrade reaches max
+			//upgradeButton.interactable = false;
 		}
 
 		if (level == 3)
@@ -150,10 +155,22 @@ public class SlowTurret : MonoBehaviour
 			bulletPrefab = bulletUpgradeII;
 			weaponSprite.sprite = upgradeBulletII;
 
+			// Update upgrade cost
+			baseUpgradeCost = 563;
+
 			// Diables upgrade button once tower upgrade reaches max
 			upgradeButton.interactable = false;
 		}
 
+		CloseUpgradeUI();
+	}
+	public void SellTurret()
+	{
+		// This would give player half of total currency spent on this tower
+		// regardless if player upgraded it or not.
+		LevelManager.main.currency += baseUpgradeCost;
+
+		Destroy(gameObject);
 		CloseUpgradeUI();
 	}
 }

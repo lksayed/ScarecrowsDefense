@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 44579533}
   - component: {fileID: 44579532}
   m_Layer: 5
-  m_Name: Pitchfork
+  m_Name: RangedTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18058,7 +18058,7 @@ GameObject:
   - component: {fileID: 571801747}
   - component: {fileID: 571801746}
   m_Layer: 5
-  m_Name: PumpkinThrower
+  m_Name: SplashTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23194,8 +23194,42 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Troop Stats:\n\nPitchfork:\n-Damage\t+++\n-Range\t+++\n-Speed\t+++\n\nScythe:\n-Damage\t++++\n-Range\t++++\n-Speed\t+++\n\nLeafblower:\n-Damage\t+\n-Range\t+++++\n-Speed\t+++++\n\nPumpkin
-    Thrower:\n-Damage\t++++++\n-Range\t++++++\n-Speed\t++"
+  m_text: 'Turret Information:
+
+
+    Ranged Tower:
+
+    Upgrade I = $100
+
+    Upgrade
+    II = $150
+
+
+    Melee Tower:
+
+    Upgrade I = $175
+
+
+    Slow Tower:
+
+    Upgrade
+    I = $250
+
+    Upgrade II = $375
+
+
+    Splash Tower:
+
+    Upgrade I = $500
+
+    Upgrade
+    II = $750
+
+
+    Selling:
+
+    Gives you half of total amount spent on a tower
+    (Base cost + Upgrades).'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36120,7 +36154,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Scythe ($350)
+  m_text: Melee Tower ($350)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -37408,7 +37442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pitchfork ($200)
+  m_text: Ranged Tower ($200)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -37851,7 +37885,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pumpkin Thrower ($1000)
+  m_text: Splash Tower ($1000)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -43521,7 +43555,7 @@ GameObject:
   - component: {fileID: 1631963069}
   - component: {fileID: 1631963068}
   m_Layer: 5
-  m_Name: Leafblower
+  m_Name: SlowTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48016,7 +48050,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leafblower ($500)
+  m_text: Slow Tower ($500)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

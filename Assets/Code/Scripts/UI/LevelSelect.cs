@@ -22,7 +22,7 @@ public class LevelSelect : MonoBehaviour
 	public void PlayMedium()
 	{
 		level = 1;
-        SceneManager.LoadSceneAsync("Game");
+      SceneManager.LoadSceneAsync("Game");
 	}
 
 	public void PlayHard()
