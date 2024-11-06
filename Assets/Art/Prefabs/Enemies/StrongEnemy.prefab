@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6369473326225227686}
   - component: {fileID: 1405275420170560525}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: StrongEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a795fa737aabf4c9d7376e7c8eda2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
-  moneyOnKill: 20
+  healthPoints: 500
+  moneyOnKill: 50
 --- !u!114 &6369473326225227686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySprites:
-  - {fileID: 21300000, guid: 2e891a2f2abc2d540bbb72a217c8a096, type: 3}
-  - {fileID: 21300000, guid: 1c8c459c1e472fe40a10f692ffe43e1f, type: 3}
+  - {fileID: 21300000, guid: 4f2d5902133ffbb4f8bed1f7d456715c, type: 3}
+  - {fileID: 21300000, guid: 949e7463bdb57d0458615998d5e66d2f, type: 3}
 --- !u!212 &1405275420170560525
 SpriteRenderer:
   m_ObjectHideFlags: 0
