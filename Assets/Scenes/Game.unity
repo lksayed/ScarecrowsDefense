@@ -11137,7 +11137,6 @@ GameObject:
   - component: {fileID: 393610578}
   - component: {fileID: 393610580}
   - component: {fileID: 393610579}
-  - component: {fileID: 393610581}
   m_Layer: 5
   m_Name: Currency
   m_TagString: Untagged
@@ -11262,18 +11261,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393610577}
   m_CullTransparentMesh: 1
---- !u!114 &393610581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393610577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3bcd0576ebc1e840835e621b7f66487, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &394318391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1509773335878314116, guid: 5c8a79b9ef52218418e127af9f7779a4, type: 3}
@@ -24412,8 +24399,8 @@ GameObject:
   - component: {fileID: 866448187}
   - component: {fileID: 866448189}
   - component: {fileID: 866448188}
-  - component: {fileID: 866448190}
   - component: {fileID: 866448191}
+  - component: {fileID: 866448192}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -24482,27 +24469,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866448186}
   m_CullTransparentMesh: 1
---- !u!95 &866448190
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866448186}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0c09186213484424b97e2d859bf2920f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &866448191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24516,6 +24482,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyUI: {fileID: 2127576921}
+  anim: {fileID: 866448192}
+--- !u!95 &866448192
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866448186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d87df8e3201ac84c8679aad34d5eecf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &868359074
 PrefabInstance:
   m_ObjectHideFlags: 0
