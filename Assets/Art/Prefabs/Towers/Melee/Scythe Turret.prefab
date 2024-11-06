@@ -312,7 +312,7 @@ SpriteRenderer:
   m_SortingLayerID: -369435143
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 319d68966cf0b4647a506f87bd5aeec2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 13b15b4f5cee34f98bbde33c2a0e3a11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -841,12 +841,13 @@ MonoBehaviour:
   rangeII: {fileID: 9206255266576809589}
   sellButton: {fileID: 233805990687915440}
   upgradeButton: {fileID: 6237496181593470762}
-  upgradeWeapon: {fileID: 21300000, guid: 5fefe1b727531d44c81466d6368f2837, type: 3}
+  upgradeWeapon: {fileID: 21300000, guid: 3bf8677dd6b6b4e00b67f4c2499dcb1b, type: 3}
   meleeDamage: 100
   targetingRange: 1
   rotationSpeed: 250
   aps: 1
   baseUpgradeCost: 450
+  secondUpgradeCost: 175
 --- !u!95 &8134136991765531325
 Animator:
   serializedVersion: 5
@@ -1015,8 +1016,8 @@ Transform:
   m_GameObject: {fileID: 8688176144756622083}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.21643952, w: 0.97629607}
-  m_LocalPosition: {x: 0.12, y: 0.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.518, y: -0.019, z: 0}
+  m_LocalScale: {x: 0.6630262, y: 0.6905703, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5277721085853272485}
@@ -1062,7 +1063,7 @@ SpriteRenderer:
   m_SortingLayerID: -369435143
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a6f17439ce2a87a43ae2e4780dcceb13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fcacf53b0fe084cf08069b8941550da1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

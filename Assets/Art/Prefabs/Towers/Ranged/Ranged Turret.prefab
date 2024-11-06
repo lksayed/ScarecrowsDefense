@@ -61,8 +61,8 @@ MonoBehaviour:
   rangeIII: {fileID: 2515761177923026502}
   sellButton: {fileID: 1469932766066322918}
   upgradeButton: {fileID: 2846068337472093507}
-  upgradeBullet: {fileID: 21300000, guid: 8dca5cd31e783de4aabbcb2e7e077ffe, type: 3}
-  upgradeBulletII: {fileID: 21300000, guid: 50747f097a7322f44967f79b24a4deb0, type: 3}
+  upgradeBullet: {fileID: 21300000, guid: 0de62db974f0c45a7981552cba77e3a5, type: 3}
+  upgradeBulletII: {fileID: 21300000, guid: 32242f1ac53e24f10910d5e8d4286e82, type: 3}
   targetingRange: 3
   rotationSpeed: 300
   bps: 0.8
@@ -116,8 +116,8 @@ Transform:
   m_GameObject: {fileID: 241247245120538329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalPosition: {x: 0.175, y: -0.005, z: 0}
+  m_LocalScale: {x: 0.98414993, y: 1.004475, z: 0.75}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2658772480261643046}
@@ -163,7 +163,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7e121ced3e532034d90cb7b75596b766, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72a72bf63f8c4453e8a9b3f2bebae1d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -527,7 +527,7 @@ SpriteRenderer:
   m_SortingLayerID: -369435143
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 319d68966cf0b4647a506f87bd5aeec2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 13b15b4f5cee34f98bbde33c2a0e3a11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
