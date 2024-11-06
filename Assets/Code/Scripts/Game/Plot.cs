@@ -81,6 +81,7 @@ public class Plot : MonoBehaviour
    private void OnMouseDown()
    {
       if (UIManager.main.IsHoveringUI()) return;
+      if (EventSystem.current.IsPointerOverGameObject()) return;
 
       if (!isValid) return;
 
