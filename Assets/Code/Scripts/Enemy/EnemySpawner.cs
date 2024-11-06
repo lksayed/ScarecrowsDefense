@@ -28,7 +28,12 @@ public class EnemySpawner : MonoBehaviour
         onEnemyDestroy.AddListener(EnemyDestroyed);
     }
 
-    private void Start()
+    //private void Start()
+    //{
+    //    StartCoroutine(StartWave());
+    //}
+
+    public void StartWaveButton()
     {
         StartCoroutine(StartWave());
     }
