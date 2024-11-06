@@ -8,5 +8,12 @@ public class Exit : MonoBehaviour
 	{
 		// Enables the game to be exited
 		Application.Quit();
-	}
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }

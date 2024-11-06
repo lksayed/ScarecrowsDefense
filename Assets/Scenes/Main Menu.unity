@@ -1382,9 +1382,13 @@ MonoBehaviour:
 
 
     Left click the "SHOP" button
-    to open the tower shop. Here, you can select a tower by left clicking a tower
-    button. To place down a tower, right click on an unoccupied grid space. You will
-    not be able to place down a tower if you do not have enough currency!
+    to open the tower shop. Here, you can select a tower by left clicking one of
+    the tower buttons. To place down a tower, left click an empty grid space. You
+    will not be able to place down a tower if you do not have enough currency!
+
+
+    Towers
+    can be upgraded or sold by left clicking them and selecting the appropriate button.
 
 
     Enemies
