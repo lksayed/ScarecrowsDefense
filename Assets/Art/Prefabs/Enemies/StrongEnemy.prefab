@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a795fa737aabf4c9d7376e7c8eda2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 500
+  healthPoints: 750
   moneyOnKill: 50
 --- !u!114 &6369473326225227686
 MonoBehaviour:
