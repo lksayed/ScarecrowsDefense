@@ -21,6 +21,10 @@ public class LevelManager : MonoBehaviour
     public Transform startingPoint;
     public List<Transform> path;
 
+    public List<GameObject> easyInvalidPlots;
+    public List<GameObject> mediumInvalidPlots;
+    public List<GameObject> hardInvalidPlots;
+
     public int playerHP;
     public int currency;
 

@@ -99,6 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverSprite: {fileID: 21300000, guid: 01d6914301dde034abc53a59beb58809, type: 3}
+  invalidSprite: {fileID: 21300000, guid: 08865dec5c9c5a2449c0827f3a0a277d, type: 3}
+  turret: {fileID: 0}
+  turret2: {fileID: 0}
+  turret3: {fileID: 0}
+  turret4: {fileID: 0}
+  isValid: 1
 --- !u!61 &4497546222079400863
 BoxCollider2D:
   m_ObjectHideFlags: 0
