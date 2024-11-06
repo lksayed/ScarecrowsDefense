@@ -846,7 +846,7 @@ MonoBehaviour:
   targetingRange: 1
   rotationSpeed: 250
   aps: 1
-  baseUpgradeCost: 175
+  baseUpgradeCost: 450
 --- !u!95 &8134136991765531325
 Animator:
   serializedVersion: 5

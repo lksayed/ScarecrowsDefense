@@ -29,8 +29,10 @@ public class SlowTurret : MonoBehaviour
 	[SerializeField] private float rotationSpeed = 300f; // Turret Rotation Speed
 	[SerializeField] private float bps = 0.3f; // Bullets Per Second
 	[SerializeField] private int baseUpgradeCost = 250; // Initial upgrade cost
+    [SerializeField] private int secondUpgradeCost = 250; // 2nd upgrade cost
+    [SerializeField] private int thirdUpgradeCost = 250; // 3rd upgrade cost
 
-	private SpriteRenderer weaponSprite;
+    private SpriteRenderer weaponSprite;
 	private Transform target;
 	private float timeUntilFire;
 	private float targetingRangeBase;
@@ -146,7 +148,7 @@ public class SlowTurret : MonoBehaviour
 			rangeII.SetActive(true);
 
 			// Update upgrade cost
-			baseUpgradeCost = 375;
+			baseUpgradeCost = secondUpgradeCost;
 
 			// Diables upgrade button once tower upgrade reaches max
 			//upgradeButton.interactable = false;
@@ -167,7 +169,7 @@ public class SlowTurret : MonoBehaviour
 			rangeIII.SetActive(true);
 
 			// Update upgrade cost
-			baseUpgradeCost = 563;
+			baseUpgradeCost = thirdUpgradeCost;
 
 			// Diables upgrade button once tower upgrade reaches max
 			upgradeButton.interactable = false;

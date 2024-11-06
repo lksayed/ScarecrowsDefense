@@ -28,9 +28,11 @@ public class RangedTurret : MonoBehaviour
 	[SerializeField] private float targetingRange = 3f; // Turret Range
 	[SerializeField] private float rotationSpeed = 300f; // Turret Rotation Speed
 	[SerializeField] private float bps = 1f; // Bullets Per Second
-	[SerializeField] private int baseUpgradeCost = 100; // Initial upgrade cost
+	[SerializeField] private int baseUpgradeCost = 100; // Initial upgrade
+    [SerializeField] private int secondUpgradeCost = 100; // 2nd upgrade cost
+    [SerializeField] private int thirdUpgradeCost = 100; // 3rd upgrade cost
 
-	private SpriteRenderer weaponSprite;
+    private SpriteRenderer weaponSprite;
 	private Transform target;
 	private float timeUntilFire;
 	private float targetingRangeBase;
@@ -147,7 +149,7 @@ public class RangedTurret : MonoBehaviour
 			rangeII.SetActive(true);
 
 			// Update upgrade cost
-			baseUpgradeCost = 150;
+			baseUpgradeCost = secondUpgradeCost;
 		}
 
 		if (level == 3)
@@ -165,7 +167,7 @@ public class RangedTurret : MonoBehaviour
 			rangeIII.SetActive(true);
 
 			// Update upgrade cost
-			baseUpgradeCost = 225; 
+			baseUpgradeCost = thirdUpgradeCost; 
 
 			// Diables upgrade button once tower upgrade reaches max
 			upgradeButton.interactable = false; 

@@ -22792,8 +22792,8 @@ MonoBehaviour:
   - {fileID: 489257258}
   - {fileID: 1475988815}
   - {fileID: 817841326}
-  playerHP: 300
-  currency: 2500
+  playerHP: 100
+  currency: 300
 --- !u!4 &772696499
 Transform:
   m_ObjectHideFlags: 0
@@ -22828,10 +22828,10 @@ MonoBehaviour:
   - {fileID: 364989323494463271, guid: ac7b8e073a9902d4f8c570ee22f99d59, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 0.5
-  timeBetweenWaves: 5
+  timeBetweenWaves: 2
   difficultyScalingFactor: 0.75
-  fastEnemiesEachWave: 010000000000000002000000020000000400000006000000080000000a0000000a0000000e000000
-  strongEnemiesEachWave: 00000000000000000000000001000000010000000200000003000000040000000600000008000000
+  fastEnemiesEachWave: 0000000002000000030000000400000006000000080000000a0000000e0000001000000012000000
+  strongEnemiesEachWave: 000000000000000001000000020000000400000006000000080000000a0000000c0000000e000000
   currentWave: 1
 --- !u!114 &772696501
 MonoBehaviour:
@@ -23473,15 +23473,15 @@ MonoBehaviour:
 
     Ranged Tower:
 
-    Upgrade I = $100
+    Upgrade I = $300
 
     Upgrade
-    II = $150
+    II = $550
 
 
     Melee Tower:
 
-    Upgrade I = $175
+    Upgrade I = $450
 
 
     Slow Tower:

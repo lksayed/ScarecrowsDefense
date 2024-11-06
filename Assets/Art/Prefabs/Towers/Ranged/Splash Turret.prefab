@@ -70,6 +70,8 @@ MonoBehaviour:
   rotationSpeed: 250
   bps: 0.5
   baseUpgradeCost: 500
+  secondUpgradeCost: 750
+  thirdUpgradeCost: 1000
 --- !u!95 &4058234455432999625
 Animator:
   serializedVersion: 5

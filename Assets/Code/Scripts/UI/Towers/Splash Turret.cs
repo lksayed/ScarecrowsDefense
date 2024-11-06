@@ -32,8 +32,10 @@ public class SplashTurret : MonoBehaviour
 	[SerializeField] private float rotationSpeed = 250f; // Turret Rotation Speed
 	[SerializeField] private float bps = 0.5f; // Bullets Per Second
 	[SerializeField] private int baseUpgradeCost = 500; // Initial upgrade cost
+    [SerializeField] private int secondUpgradeCost = 500; // 2nd upgrade cost
+    [SerializeField] private int thirdUpgradeCost = 500; // 3rd upgrade cost
 
-	private SpriteRenderer weaponSprite;
+    private SpriteRenderer weaponSprite;
 	private Transform target;
 	private float timeUntilFire;
 	private float targetingRangeBase;
@@ -150,7 +152,7 @@ public class SplashTurret : MonoBehaviour
 			rangeII.SetActive(true);
 
 			// Update upgrade cost
-			baseUpgradeCost = 750;
+			baseUpgradeCost = secondUpgradeCost;
 
 			// Diables upgrade button once tower upgrade reaches max
 			//upgradeButton.interactable = false;
@@ -176,7 +178,7 @@ public class SplashTurret : MonoBehaviour
 			rangeIII.SetActive(true);
 
 			// Update upgrade cost
-			baseUpgradeCost = 1125;
+			baseUpgradeCost = thirdUpgradeCost;
 
 			// Diables upgrade button once tower upgrade reaches max
 			upgradeButton.interactable = false;

@@ -65,8 +65,10 @@ MonoBehaviour:
   upgradeBulletII: {fileID: 21300000, guid: 50747f097a7322f44967f79b24a4deb0, type: 3}
   targetingRange: 3
   rotationSpeed: 300
-  bps: 1
-  baseUpgradeCost: 100
+  bps: 0.8
+  baseUpgradeCost: 300
+  secondUpgradeCost: 550
+  thirdUpgradeCost: 700
 --- !u!95 &3199277791578867450
 Animator:
   serializedVersion: 5

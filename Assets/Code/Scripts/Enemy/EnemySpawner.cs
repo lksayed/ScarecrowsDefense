@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private int baseEnemies = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
-    [SerializeField] private float timeBetweenWaves = 5f;
+    [SerializeField] private float timeBetweenWaves = 2f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private List<int> fastEnemiesEachWave;
     [SerializeField] private List<int> strongEnemiesEachWave;
@@ -71,6 +71,7 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
+        enemiesPerSecond += 0.25f;
         StartCoroutine(StartWave());
     }
 
@@ -85,14 +86,14 @@ public class EnemySpawner : MonoBehaviour
 
 
         // Spawn a Fast Enemy
-        if (fastEnemiesEachWave[currentWave - 1] > 0 && enemiesLeftToSpawn < 4)
+        if (fastEnemiesEachWave[currentWave - 1] > 0 && enemiesLeftToSpawn > 0 && (enemiesLeftToSpawn % 2 == 1))
         {
             GameObject prefabToSpawn = enemyPrefabs[1];
             Instantiate(prefabToSpawn, LevelManager.main.startingPoint.position, Quaternion.identity);
             fastEnemiesEachWave[currentWave - 1]--;
         }
         // Spawn a Strong Enemy
-        else if (strongEnemiesEachWave[currentWave - 1] > 0)
+        else if (strongEnemiesEachWave[currentWave - 1] > 0 && enemiesLeftToSpawn > 0 && (enemiesLeftToSpawn % 3 == 1))
         {
             GameObject prefabToSpawn = enemyPrefabs[2];
             Instantiate(prefabToSpawn, LevelManager.main.startingPoint.position, Quaternion.identity);

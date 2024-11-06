@@ -36,8 +36,9 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        currency = 500;
-        playerHP = 50;
+        // NOTE: This overrides the custom values set in the Unity Inpector Window!
+        // currency = 500;
+        // playerHP = 50;
 
         GameObject background = GameObject.Find("BackgroundSprite");
 

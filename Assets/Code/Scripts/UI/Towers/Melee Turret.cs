@@ -24,8 +24,10 @@ public class MeleeTurret : MonoBehaviour
 	[SerializeField] private float rotationSpeed = 200f; // Turret Rotation Speed
 	[SerializeField] private float aps = 1f; // Attacks Per Second (Can be modified)
 	[SerializeField] private int baseUpgradeCost = 175; // Initial upgrade cost
+    [SerializeField] private int secondUpgradeCost = 175; // 2nd upgrade cost
+    // [SerializeField] private int thirdUpgradeCost = 175; // 3rd upgrade cost
 
-	private SpriteRenderer weaponSprite;
+    private SpriteRenderer weaponSprite;
 	private Transform target;
 	private Animator meleeAnimator;
 	private float timeBtwAtk;
@@ -139,7 +141,7 @@ public class MeleeTurret : MonoBehaviour
 		{
 			// Assigns new stat values to tower
 			meleeDamage = 200;
-			aps = 2f;
+			aps = 0.75f;
 			targetingRange = 1.5f;
 
 			// Switches weapon sprite
@@ -150,7 +152,7 @@ public class MeleeTurret : MonoBehaviour
 			rangeII.SetActive(true);
 
 			// Update upgrade cost
-			baseUpgradeCost = 263;
+			baseUpgradeCost = secondUpgradeCost;
 
 			// Diables upgrade button once tower upgrade reaches max
 			upgradeButton.interactable = false;
