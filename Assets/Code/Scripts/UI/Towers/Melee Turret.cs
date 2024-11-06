@@ -12,6 +12,7 @@ public class MeleeTurret : MonoBehaviour
 	[SerializeField] private Transform turretRotationPoint;
 	[SerializeField] private LayerMask enemyMask; // Allows turret to ignore map tiles
 	[SerializeField] private GameObject selectUI;
+	[SerializeField] private Button sellButton;
 	[SerializeField] private Button upgradeButton;
 	[SerializeField] private Sprite upgradeWeapon;
 
@@ -20,8 +21,7 @@ public class MeleeTurret : MonoBehaviour
 	[SerializeField] private float targetingRange = 1f; // Turret Range
 	[SerializeField] private float rotationSpeed = 200f; // Turret Rotation Speed
 	[SerializeField] private float aps = 1f; // Attacks Per Second (Can be modified)
-	[SerializeField] private int baseUpgradeCost = 300; // Initial upgrade cost
-	[SerializeField] private int levelCap = 2; // Tower upgrade cap
+	[SerializeField] private int baseUpgradeCost = 175; // Initial upgrade cost
 
 	private SpriteRenderer weaponSprite;
 	private Transform target;
@@ -38,6 +38,7 @@ public class MeleeTurret : MonoBehaviour
 		targetingRangeBase = targetingRange;
 
 		upgradeButton.onClick.AddListener(UpgradeTurret);
+		sellButton.onClick.AddListener(SellTurret);
 
 		// Finds "Weapon" sprite in parent object (the tower)
 		weaponSprite = this.transform.Find("RotationPoint").Find("Scythe").GetComponent<SpriteRenderer>();
@@ -113,7 +114,6 @@ public class MeleeTurret : MonoBehaviour
 
 	public void OpenUpgradeUI()
 	{
-		if (level == levelCap) return;
 		selectUI.SetActive(true);
 	}
 	public void CloseUpgradeUI()
@@ -143,10 +143,22 @@ public class MeleeTurret : MonoBehaviour
 			// Switches weapon sprite
 			weaponSprite.sprite = upgradeWeapon;
 
+			// Update upgrade cost
+			baseUpgradeCost = 263;
+
 			// Diables upgrade button once tower upgrade reaches max
 			upgradeButton.interactable = false;
 		}
 
+		CloseUpgradeUI();
+	}
+	public void SellTurret()
+	{
+		// This would give player half of total currency spent on this tower
+		// regardless if player upgraded it or not.
+		LevelManager.main.currency += baseUpgradeCost;
+
+		Destroy(gameObject);
 		CloseUpgradeUI();
 	}
 }

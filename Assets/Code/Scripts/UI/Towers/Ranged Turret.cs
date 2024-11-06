@@ -16,6 +16,7 @@ public class RangedTurret : MonoBehaviour
 	[SerializeField] private GameObject bulletUpgrade;
 	[SerializeField] private GameObject bulletUpgradeII;
 	[SerializeField] private GameObject selectUI;
+	[SerializeField] private Button sellButton;
 	[SerializeField] private Button upgradeButton;
 	[SerializeField] private Sprite upgradeBullet; // First Upgrade Sprite
 	[SerializeField] private Sprite upgradeBulletII; // Second Upgrade Sprite
@@ -40,6 +41,7 @@ public class RangedTurret : MonoBehaviour
 		targetingRangeBase = targetingRange;
 
 		upgradeButton.onClick.AddListener(UpgradeTurret);
+		sellButton.onClick.AddListener(SellTurret);
 
 		// Finds "Weapon" sprite in parent object (the tower)
 		weaponSprite = this.transform.Find("RotationPoint").Find("Weapon").GetComponent<SpriteRenderer>();
@@ -151,9 +153,22 @@ public class RangedTurret : MonoBehaviour
 			bulletPrefab = bulletUpgradeII;
 			weaponSprite.sprite = upgradeBulletII;
 
+			// Update upgrade cost
+			baseUpgradeCost = 225; 
+
 			// Diables upgrade button once tower upgrade reaches max
 			upgradeButton.interactable = false; 
 		}
+		CloseUpgradeUI();
+	}
+
+	public void SellTurret()
+	{
+		// This would give player half of total currency spent on this tower
+		// regardless if player upgraded it or not.
+		LevelManager.main.currency += baseUpgradeCost;
+
+		Destroy(gameObject);
 		CloseUpgradeUI();
 	}
 }

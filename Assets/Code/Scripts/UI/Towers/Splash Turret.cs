@@ -16,6 +16,7 @@ public class SplashTurret : MonoBehaviour
 	[SerializeField] private GameObject bulletUpgrade;
 	[SerializeField] private GameObject bulletUpgradeII;
 	[SerializeField] private GameObject selectUI;
+	[SerializeField] private Button sellButton;
 	[SerializeField] private Button upgradeButton;
 	[SerializeField] private Sprite upgradeBullet; // First Upgrade Sprite
 	[SerializeField] private Sprite upgradeBulletII; // Second Upgrade Sprite
@@ -25,7 +26,6 @@ public class SplashTurret : MonoBehaviour
 	[SerializeField] private float rotationSpeed = 250f; // Turret Rotation Speed
 	[SerializeField] private float bps = 0.5f; // Bullets Per Second
 	[SerializeField] private int baseUpgradeCost = 500; // Initial upgrade cost
-	[SerializeField] private int levelCap = 3; // Tower upgrade cap
 
 	private SpriteRenderer weaponSprite;
 	private Transform target;
@@ -41,6 +41,7 @@ public class SplashTurret : MonoBehaviour
 		targetingRangeBase = targetingRange;
 
 		upgradeButton.onClick.AddListener(UpgradeTurret);
+		sellButton.onClick.AddListener(SellTurret);
 
 		// Finds "Weapon" sprite in parent object (the tower)
 		weaponSprite = this.transform.Find("RotationPoint").Find("Weapon").GetComponent<SpriteRenderer>();
@@ -109,7 +110,6 @@ public class SplashTurret : MonoBehaviour
 #endif
 	public void OpenUpgradeUI()
 	{
-		if (level == levelCap) return;
 		selectUI.SetActive(true);
 	}
 	public void CloseUpgradeUI()
@@ -140,7 +140,10 @@ public class SplashTurret : MonoBehaviour
 			weaponSprite.sprite = upgradeBullet;
 
 			// Update upgrade cost
-			baseUpgradeCost = 800;
+			baseUpgradeCost = 750;
+
+			// Diables upgrade button once tower upgrade reaches max
+			//upgradeButton.interactable = false;
 		}
 
 		if (level == 3)
@@ -153,10 +156,22 @@ public class SplashTurret : MonoBehaviour
 			bulletPrefab = bulletUpgradeII;
 			weaponSprite.sprite = upgradeBulletII;
 
+			// Update upgrade cost
+			baseUpgradeCost = 1125;
+
 			// Diables upgrade button once tower upgrade reaches max
 			upgradeButton.interactable = false;
 		}
 
+		CloseUpgradeUI();
+	}
+	public void SellTurret()
+	{
+		// This would give player half of total currency spent on this tower
+		// regardless if player upgraded it or not.
+		LevelManager.main.currency += baseUpgradeCost;
+
+		Destroy(gameObject);
 		CloseUpgradeUI();
 	}
 }
