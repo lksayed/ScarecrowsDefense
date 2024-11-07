@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5473513938852302326}
   - component: {fileID: 8618320177839440411}
-  - component: {fileID: 8850766277748045029}
+  - component: {fileID: 6718337494851202423}
   - component: {fileID: 1266049672772190731}
-  - component: {fileID: 9197826225255121546}
+  - component: {fileID: 5859377231268597975}
   m_Layer: 7
-  m_Name: Test Slow 1
+  m_Name: Small Pumpkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: -0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2716657b5ec7e4e27ae0ea0074be8b17, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1cd47b2e7ce46a146b33598434a235be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,8 +87,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8850766277748045029
-BoxCollider2D:
+--- !u!58 &6718337494851202423
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -119,19 +119,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.1}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.1}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
 --- !u!50 &1266049672772190731
 Rigidbody2D:
   serializedVersion: 4
@@ -159,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &9197826225255121546
+--- !u!114 &5859377231268597975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,14 +158,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8668364877088270052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be390081d8b70b045915912fd5f583ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d7a96ca989a89c409ca169a8ba339c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1266049672772190731}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  bulletSpeed: 25
-  bulletLifeTime: 2
-  rotateSpeed: 100
+  bulletDamage: 200
+  bulletSpeed: 4.5
+  bulletLifeTime: 3
   spreadRange: 0.8
